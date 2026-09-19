@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test Series | Cognition Academy — IIT-JEE & NEET | Wardha</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Raleway:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <!-- Hamburger Button -->
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <a class="nav-brand" href="index.html">
+    <div class="nav-logo-circle">
+      <img src="logo.jpeg" alt="Cognition Academy Logo" style="width:38px; height:38px; border-radius:50%; object-fit:cover;">
+    </div>
+    <div class="nav-brand-text">
+      <div class="nav-brand-sub">Navodaya Alumni's</div>
+      <div class="nav-brand-name">Cognition Academy</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="courses.html">All Courses</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="results.html">Results</a></li>
+    <li><a href="faculty.html">Faculty</a></li>
+    <li><a href="features.html">Features</a></li>
+    <li><a href="curriculum.html">Curriculum</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="testimonials.html">Testimonials</a></li>
+    <li><a href="videos.html" class="nav-videos">▶ Videos</a></li>
+    <li><a href="tests.html">Test Series</a></li>
+    <li><a href="enquiry.html" class="nav-enquiry">Enquiry</a></li>
+    <li><a href="login.html" class="nav-login-btn">Login</a></li>
+  </ul>
+</nav>
+
+<!-- Mobile Nav Overlay -->
+<div class="mobile-nav-overlay" id="mobileOverlay" onclick="toggleMenu()"></div>
+
+<!-- Mobile Nav Drawer -->
+<div class="mobile-nav-drawer" id="mobileDrawer">
+  <div class="mobile-nav-header">
+    <img src="logo.jpeg" alt="Logo">
+    <div class="brand-text">
+      <div class="brand-sub">Navodaya Alumni's</div>
+      <div class="brand-name">Cognition Academy</div>
+    </div>
+  </div>
+  <ul class="mobile-nav-links">
+    <li><a href="index.html">🏠 Home</a></li>
+    <li><a href="courses.html">📖 All Courses</a></li>
+    <li><a href="about.html">ℹ️ About</a></li>
+    <li><a href="results.html">🏆 Results</a></li>
+    <li><a href="faculty.html">👨‍🏫 Faculty</a></li>
+    <li><a href="features.html">⭐ Features</a></li>
+    <li><a href="curriculum.html">📚 Curriculum</a></li>
+    <li><a href="gallery.html">🖼️ Gallery</a></li>
+    <li><a href="testimonials.html">💬 Testimonials</a></li>
+    <li class="mobile-videos-link"><a href="videos.html">▶️ Free Videos</a></li>
+    <li><a href="tests.html">📝 Test Series</a></li>
+    <li><a href="enquiry.html">📋 Enquiry</a></li>
+    <li class="mobile-login-link"><a href="login.html">🔐 Login / Sign Up</a></li>
+  </ul>
+  <div class="mobile-nav-footer">
+    <p>📍 Karale Building, Kelkarwadi, Wardha</p>
+    <a href="tel:9834683450">📞 9834683450 | 7387350221</a>
+  </div>
+</div>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="section-label">Cognition Academy</div>
+  <h1>📝 Test Series</h1>
+  <p>JEE & NEET Mock Tests — Topic-wise, Chapter-wise, Full-length Exams</p>
+</div>
+
+<!-- TESTS SECTION -->
+<section class="tests-section">
+
+  <!-- Contact Notice Banner -->
+  <div style="background: rgba(255,255,255,0.92); border-radius: 16px; padding: 40px 48px; margin-bottom: 40px; border-left: 5px solid var(--sky); box-shadow: 0 4px 24px rgba(10,30,61,0.10); display: flex; align-items: center; gap: 32px; flex-wrap: wrap;">
+    <div style="width: 64px; height: 64px; background: linear-gradient(135deg, var(--navy), var(--blue)); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 28px; flex-shrink: 0;">🔐</div>
+    <div style="flex: 1; min-width: 260px;">
+      <div style="color: var(--sky); font-size: 11px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px;">Test Series Access</div>
+      <div style="color: var(--navy); font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 800; margin-bottom: 10px; line-height: 1.3;">Contact the Academy to Get Access</div>
+      <div style="color: #1e2d4a; font-size: 14px; line-height: 1.8; font-weight: 500;">To access our Test Series, please contact Cognition Academy. Once registered, you will receive login credentials to access the full test portal — including topic-wise, chapter-wise and full-length mock tests.</div>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 10px; min-width: 160px;">
+      <a href="https://wa.me/917387350221" target="_blank" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: #25d366; color: #fff; padding: 13px 24px; border-radius: 8px; font-weight: 800; font-size: 14px; text-decoration: none; box-shadow: 0 3px 12px rgba(37,211,102,0.3);">
+        <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:#fff;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp Us
+      </a>
+      <a href="javascript:void(0)" onclick="openCallPopup()" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: var(--navy); color: #fff; padding: 13px 24px; border-radius: 8px; font-weight: 800; font-size: 14px; text-decoration: none;">
+        <svg viewBox="0 0 24 24" style="width:16px;height:16px;fill:#fff;"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        Call Now
+      </a>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 40px;">
+    <div style="background: rgba(255,255,255,0.88); border: 1.5px solid var(--border); border-radius: 12px; padding: 20px 28px; text-align: center; flex: 1; min-width: 150px; border-top: 3px solid var(--sky);">
+      <div style="font-family: 'Playfair Display', serif; font-size: 32px; color: var(--navy); font-weight: 800;">12+</div>
+      <div style="font-size: 13px; color: #1e2d4a; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Total Tests</div>
+    </div>
+    <div style="background: rgba(255,255,255,0.88); border: 1.5px solid var(--border); border-radius: 12px; padding: 20px 28px; text-align: center; flex: 1; min-width: 150px; border-top: 3px solid #ffa726;">
+      <div style="font-family: 'Playfair Display', serif; font-size: 32px; color: var(--navy); font-weight: 800;">JEE+NEET</div>
+      <div style="font-size: 13px; color: #1e2d4a; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Covered</div>
+    </div>
+    <div style="background: rgba(255,255,255,0.88); border: 1.5px solid var(--border); border-radius: 12px; padding: 20px 28px; text-align: center; flex: 1; min-width: 150px; border-top: 3px solid var(--blue);">
+      <div style="font-family: 'Playfair Display', serif; font-size: 32px; color: var(--navy); font-weight: 800;">500+</div>
+      <div style="font-size: 13px; color: #1e2d4a; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Questions</div>
+    </div>
+    <div style="background: rgba(255,255,255,0.88); border: 1.5px solid var(--border); border-radius: 12px; padding: 20px 28px; text-align: center; flex: 1; min-width: 150px; border-top: 3px solid #66bb6a;">
+      <div style="font-family: 'Playfair Display', serif; font-size: 32px; color: var(--navy); font-weight: 800;">4</div>
+      <div style="font-size: 13px; color: #1e2d4a; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Subjects</div>
+    </div>
+  </div>
+
+  <!-- Login Button -->
+  <div style="text-align: center; margin-bottom: 40px;">
+    <div style="font-size: 14px; color: #1e2d4a; margin-bottom: 16px; font-weight: 600;">Already have login credentials from Academy?</div>
+    <a href="https://cognition.theonlinetests.com/dynamicwl/login" target="_blank" style="display: inline-flex; align-items: center; gap: 10px; background: var(--navy); color: #fff; padding: 16px 48px; border-radius: 10px; font-weight: 800; font-size: 16px; text-decoration: none; box-shadow: 0 4px 20px rgba(10,30,61,0.25); transition: transform .2s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform=''">
+      🔐 Login to Test Portal
+    </a>
+  </div>
+
+  <!-- Test Types Info -->
+  <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px,1fr)); gap: 18px; margin-top: 20px;">
+    <div style="background: rgba(255,255,255,0.88); border-radius: 12px; padding: 24px 20px; border-top: 3px solid var(--sky); box-shadow: 0 2px 12px rgba(10,30,61,0.07);">
+      <div style="font-size: 32px; margin-bottom: 10px;">📝</div>
+      <div style="font-weight: 800; color: var(--navy); font-size: 15px; margin-bottom: 6px;">Topic-wise Tests</div>
+      <div style="font-size: 13px; color: #1e2d4a;">Chapter specific tests for focused practice on individual topics.</div>
+    </div>
+    <div style="background: rgba(255,255,255,0.88); border-radius: 12px; padding: 24px 20px; border-top: 3px solid #ffa726; box-shadow: 0 2px 12px rgba(10,30,61,0.07);">
+      <div style="font-size: 32px; margin-bottom: 10px;">📋</div>
+      <div style="font-weight: 800; color: var(--navy); font-size: 15px; margin-bottom: 6px;">Full Length Tests</div>
+      <div style="font-size: 13px; color: #1e2d4a;">Complete JEE/NEET pattern mock tests with real exam experience.</div>
+    </div>
+    <div style="background: rgba(255,255,255,0.88); border-radius: 12px; padding: 24px 20px; border-top: 3px solid #66bb6a; box-shadow: 0 2px 12px rgba(10,30,61,0.07);">
+      <div style="font-size: 32px; margin-bottom: 10px;">📊</div>
+      <div style="font-weight: 800; color: var(--navy); font-size: 15px; margin-bottom: 6px;">Instant Results</div>
+      <div style="font-size: 13px; color: #1e2d4a;">Get detailed analysis and scores immediately after test completion.</div>
+    </div>
+    <div style="background: rgba(255,255,255,0.88); border-radius: 12px; padding: 24px 20px; border-top: 3px solid #7c4dff; box-shadow: 0 2px 12px rgba(10,30,61,0.07);">
+      <div style="font-size: 32px; margin-bottom: 10px;">🏆</div>
+      <div style="font-weight: 800; color: var(--navy); font-size: 15px; margin-bottom: 6px;">All 4 Subjects</div>
+      <div style="font-size: 13px; color: #1e2d4a;">Physics, Chemistry, Mathematics & Biology — complete coverage.</div>
+    </div>
+  </div>
+
+</section>
+
+<!-- TEST COMING SOON MODAL -->
+<div id="testModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:10000; align-items:center; justify-content:center;">
+  <div style="background:#fff; border-radius:16px; padding:40px; width:min(460px,90vw); text-align:center; position:relative;">
+    <button onclick="document.getElementById('testModal').style.display='none'" style="position:absolute;top:16px;right:16px;background:none;border:none;font-size:24px;cursor:pointer;color:#999;">×</button>
+    <div style="font-size:48px; margin-bottom:16px;">📝</div>
+    <h3 style="font-family:'Playfair Display',serif; color:var(--navy); font-size:22px; margin-bottom:10px;" id="testModalTitle">Test Starting</h3>
+    <p style="color:var(--gray); font-size:14px; margin-bottom:24px;">This test will be available very soon. Cognition Academy is preparing high-quality questions for you!</p>
+    <div style="background: var(--lightgray); border-radius:8px; padding:16px; margin-bottom:24px; text-align:left;">
+      <div style="font-size:13px; color:var(--navy); font-weight:700; margin-bottom:8px;">Meanwhile you can:</div>
+      <div style="font-size:13px; color:var(--gray); line-height:2;">
+        📺 Watch free lectures on <a href="videos.html" style="color:var(--blue); font-weight:700;">Videos page</a><br>
+        📞 Call us: <a href="tel:9834683450" style="color:var(--blue); font-weight:700;">9834683450</a><br>
+        💬 WhatsApp: <a href="https://wa.me/917387350221" target="_blank" style="color:var(--blue); font-weight:700;">7387350221</a>
+      </div>
+    </div>
+    <button onclick="document.getElementById('testModal').style.display='none'" class="test-start-btn" style="width:100%; justify-content:center;">Got it!</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2025 <strong>Navodaya Alumni's Cognition Academy</strong>, Wardha &nbsp;|&nbsp; IIT-JEE | NEET &nbsp;|&nbsp; <strong>Your Belief! Our Responsibility!</strong></p>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<div class="whatsapp-float">
+  <span class="whatsapp-tooltip">Chat on WhatsApp</span>
+  <a class="whatsapp-btn" href="https://wa.me/917387350221" target="_blank" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+</div>
+<!-- CALL FLOAT -->
+<div class="call-float">
+  <span class="call-tooltip">Call Us Now</span>
+  <a class="call-btn" href="javascript:void(0)" onclick="openCallPopup()" aria-label="Call">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+  </a>
+</div>
+
+<script>
+// Check login state
+const user = JSON.parse(localStorage.getItem('cognitionUser') || 'null');
+if (user) {
+  document.getElementById('loginNotice').style.display = 'none';
+  const banner = document.getElementById('loggedInBanner');
+  banner.style.display = 'flex';
+  document.getElementById('welcomeName').textContent = 'Welcome back, ' + user.name + '! 👋';
+  document.getElementById('navLoginBtn').textContent = 'Logout';
+  document.getElementById('navLoginBtn').href = '#';
+  document.getElementById('navLoginBtn').onclick = logout;
+  // Unlock premium tests
+  document.querySelectorAll('.locked-btn').forEach(btn => {
+    btn.classList.remove('locked-btn');
+    btn.innerHTML = 'Start Test →';
+    btn.onclick = function() {
+      const title = this.closest('.test-card').querySelector('h4').textContent;
+      startTest(title);
+    };
+  });
+  document.querySelectorAll('.test-card.locked').forEach(card => {
+    card.classList.remove('locked');
+  });
+}
+
+function logout() {
+  localStorage.removeItem('cognitionUser');
+  window.location.reload();
+}
+
+function filterTests(subject, btn) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.test-card').forEach(card => {
+    if (subject === 'all' || card.dataset.subject === subject) {
+      card.style.display = '';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+
+function startTest(title) {
+  document.getElementById('testModalTitle').textContent = title;
+  document.getElementById('testModal').style.display = 'flex';
+}
+function toggleMenu() {
+  const drawer = document.getElementById("mobileDrawer");
+  const overlay = document.getElementById("mobileOverlay");
+  const ham = document.getElementById("hamburger");
+  drawer.classList.toggle("open");
+  overlay.classList.toggle("open");
+  ham.classList.toggle("open");
+}
+</script>
+<!-- CALL POPUP -->
+<div class="call-popup-overlay" id="callOverlay" onclick="closeCallPopup()"></div>
+<div class="call-popup" id="callPopup">
+  <div class="call-popup-header">
+    <div class="cp-icon">📞</div>
+    <div>
+      <div class="cp-title">Talk to a Counsellor</div>
+      <div class="cp-sub">Have doubts? We are happy to help!</div>
+    </div>
+    <button class="call-popup-close" onclick="closeCallPopup()">×</button>
+  </div>
+  <div class="call-popup-body">
+    <div class="cp-label">Call Us Now</div>
+    <div class="call-popup-numbers">
+      <a href="tel:+917387350221">
+        <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        7387350221
+      </a>
+    </div>
+    <a class="call-popup-wa" href="https://wa.me/917387350221" target="_blank">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Chat on WhatsApp
+    </a>
+  </div>
+</div>
+<script>
+function openCallPopup() {
+  document.getElementById("callPopup").classList.add("open");
+  document.getElementById("callOverlay").classList.add("open");
+}
+function closeCallPopup() {
+  document.getElementById("callPopup").classList.remove("open");
+  document.getElementById("callOverlay").classList.remove("open");
+}
+</script>
+</body>
+</html>

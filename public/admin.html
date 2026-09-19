@@ -1,0 +1,1429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard | Cognition Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Raleway:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0a1e3d;
+  --blue: #0070f3;
+  --sky: #29b6f6;
+  --dark-bg: #090d16;
+  --card-bg: rgba(18, 26, 44, 0.7);
+  --border: rgba(255, 255, 255, 0.08);
+  --text: #f3f4f6;
+  --text-muted: #9ca3af;
+  --green: #10b981;
+  --red: #ef4444;
+}
+
+* {
+  margin: 0; padding: 0; box-sizing: border-box;
+  font-family: 'Outfit', 'Raleway', sans-serif;
+}
+
+body {
+  background-color: var(--dark-bg);
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(0, 112, 243, 0.12) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(41, 182, 246, 0.08) 0px, transparent 50%);
+  color: var(--text);
+  min-height: 100vh;
+  padding: 30px 5%;
+}
+
+/* Auth Lock Screen Overlay */
+.lock-screen {
+  position: fixed; inset: 0;
+  background: rgba(5, 8, 15, 0.95);
+  backdrop-filter: blur(20px);
+  z-index: 10000;
+  display: flex; align-items: center; justify-content: center;
+  transition: opacity 0.3s ease;
+}
+.lock-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 40px;
+  width: 90%; max-width: 420px;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+.lock-icon {
+  font-size: 3rem; margin-bottom: 16px;
+}
+.lock-card h2 { margin-bottom: 8px; font-weight: 700; }
+.lock-card p { color: var(--text-muted); font-size: 14px; margin-bottom: 24px; }
+.lock-input {
+  width: 100%; padding: 14px;
+  border-radius: 8px; border: 1px solid var(--border);
+  background: rgba(255,255,255,0.05); color: #fff;
+  font-size: 16px; margin-bottom: 16px; text-align: center;
+  transition: border-color 0.2s;
+}
+.lock-input:focus { outline: none; border-color: var(--blue); }
+.lock-btn {
+  width: 100%; padding: 14px;
+  border-radius: 8px; border: none;
+  background: var(--blue); color: #fff;
+  font-size: 16px; font-weight: 700; cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+.lock-btn:hover { background: #0060d0; }
+.lock-btn:active { transform: scale(0.98); }
+
+/* Main Dashboard UI */
+header {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 32px; flex-wrap: wrap; gap: 16px;
+}
+.brand h1 { font-size: 24px; font-weight: 800; background: linear-gradient(to right, #fff, var(--sky)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.brand p { color: var(--text-muted); font-size: 13px; margin-top: 2px; }
+.header-actions { display: flex; gap: 12px; }
+.btn-secondary {
+  padding: 10px 20px; border-radius: 8px; border: 1px solid var(--border);
+  background: rgba(255,255,255,0.05); color: var(--text);
+  font-weight: 600; cursor: pointer; transition: all 0.2s; font-size: 14px;
+}
+.btn-secondary:hover { background: rgba(255,255,255,0.1); border-color: var(--text-muted); }
+
+/* Navigation Tabs */
+.tabs {
+  display: flex; gap: 12px; border-bottom: 1px solid var(--border);
+  margin-bottom: 30px;
+}
+.tab-link {
+  padding: 12px 24px; background: none; border: none;
+  color: var(--text-muted); cursor: pointer; font-size: 16px; font-weight: 600;
+  position: relative; transition: color 0.2s;
+}
+.tab-link.active { color: var(--sky); }
+.tab-link.active::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+  background: var(--sky); border-radius: 3px 3px 0 0;
+}
+
+/* Panel Sections */
+.panel { display: none; }
+.panel.active { display: block; animation: fadeIn 0.3s ease-in-out; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Controls Grid (Filters, Search) */
+.controls-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px; margin-bottom: 24px;
+}
+.control-item label { display: block; font-size: 12px; color: var(--text-muted); margin-bottom: 6px; font-weight: 600; text-transform: uppercase; }
+.select-input, .search-input {
+  width: 100%; padding: 12px; border-radius: 8px;
+  border: 1px solid var(--border); background: var(--card-bg); color: #fff;
+  font-size: 14px; transition: border-color 0.2s;
+}
+.select-input:focus, .search-input:focus { outline: none; border-color: var(--sky); }
+
+/* Glassmorphism Table & Cards */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; text-align: left; font-size: 14px; }
+th { padding: 16px; border-bottom: 2px solid var(--border); color: var(--text-muted); font-weight: 600; text-transform: uppercase; font-size: 12px; }
+td { padding: 16px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+tr:hover td { background: rgba(255,255,255,0.02); }
+
+/* Badges */
+.badge {
+  padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; display: inline-block;
+}
+.badge-pending { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); }
+.badge-contacted { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
+
+/* Table Action elements */
+.action-select {
+  padding: 6px 12px; border-radius: 6px; border: 1px solid var(--border);
+  background: rgba(255,255,255,0.05); color: #fff; font-size: 12px; cursor: pointer;
+}
+.notes-input-wrapper { display: flex; gap: 6px; align-items: center; width: 100%; min-width: 150px; }
+.notes-table-input {
+  flex: 1; padding: 6px 10px; border-radius: 6px; border: 1px solid var(--border);
+  background: rgba(255,255,255,0.05); color: #fff; font-size: 12px; transition: border-color 0.2s;
+}
+.notes-table-input:focus { outline: none; border-color: var(--sky); }
+.btn-save-notes {
+  background: rgba(0, 112, 243, 0.2); border: 1px solid rgba(0, 112, 243, 0.4);
+  color: var(--sky); padding: 6px 10px; border-radius: 6px; cursor: pointer; font-size: 12px;
+}
+.btn-save-notes:hover { background: var(--blue); color: #fff; }
+
+.btn-delete {
+  background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #f87171; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 12px;
+}
+.btn-delete:hover { background: var(--red); color: #fff; }
+
+/* Detail modal overlay */
+.modal {
+  position: fixed; inset: 0;
+  background: rgba(5, 8, 15, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 9999;
+  display: none; align-items: center; justify-content: center;
+}
+.modal.open { display: flex; }
+.modal-content {
+  background: #111827; border: 1px solid var(--border);
+  border-radius: 16px; padding: 32px; width: 90%; max-width: 550px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+  position: relative;
+}
+.modal-close {
+  position: absolute; top: 20px; right: 20px;
+  background: none; border: none; color: var(--text-muted); font-size: 24px; cursor: pointer;
+}
+.modal-close:hover { color: #fff; }
+.modal-title { font-size: 20px; font-weight: 700; margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 12px; }
+.modal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 24px; margin-bottom: 20px; }
+.modal-item label { display: block; font-size: 11px; color: var(--text-muted); font-weight: 700; text-transform: uppercase; margin-bottom: 4px; }
+.modal-item p { font-size: 14px; font-weight: 500; word-break: break-all; }
+.modal-item-full { grid-column: 1 / -1; }
+
+/* Dynamic Toast notifications */
+.toast-container {
+  position: fixed; bottom: 24px; right: 24px; z-index: 10005;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.toast {
+  background: #1f2937; border-left: 4px solid var(--sky); border-radius: 8px;
+  padding: 16px 24px; color: #fff; font-size: 14px; font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3); display: flex; align-items: center;
+  justify-content: space-between; gap: 16px;
+  animation: slideIn 0.3s ease;
+}
+@keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+.toast.success { border-left-color: var(--green); }
+.toast.error { border-left-color: var(--red); }
+
+/* UPLOAD WIDGETS */
+.upload-grid {
+  display: grid; grid-template-columns: 1fr 2fr; gap: 24px; flex-wrap: wrap;
+}
+@media (max-width: 768px) {
+  .upload-grid { grid-template-columns: 1fr; }
+}
+
+.upload-zone {
+  border: 2px dashed rgba(255,255,255,0.15); border-radius: 12px;
+  padding: 30px; text-align: center; cursor: pointer;
+  background: rgba(255,255,255,0.02); transition: all 0.2s;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+.upload-zone:hover, .upload-zone.dragover {
+  border-color: var(--sky); background: rgba(0, 112, 243, 0.05);
+}
+.upload-zone svg { width: 40px; height: 40px; fill: var(--text-muted); margin-bottom: 12px; }
+.upload-zone p { font-size: 13px; color: var(--text-muted); }
+.upload-zone span { color: var(--sky); font-weight: 600; }
+
+.form-group { margin-bottom: 16px; }
+.form-group label { display: block; font-size: 12px; color: var(--text-muted); font-weight: 600; margin-bottom: 6px; }
+.form-input {
+  width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border);
+  background: rgba(255,255,255,0.04); color: #fff; font-size: 14px;
+}
+.form-input:focus { outline: none; border-color: var(--sky); }
+
+.btn-primary {
+  background: var(--blue); color: #fff; border: none; padding: 12px 24px;
+  border-radius: 8px; font-weight: 700; cursor: pointer; transition: all 0.2s;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.btn-primary:hover { background: #0060d0; transform: translateY(-1px); }
+
+/* GALLERY GRID IN DASHBOARD */
+.dash-gallery-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px; margin-top: 24px;
+}
+.dash-gallery-card {
+  border-radius: 12px; border: 1px solid var(--border); overflow: hidden;
+  background: rgba(255,255,255,0.03); position: relative;
+}
+.dash-gallery-card img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+.dash-gallery-info { padding: 10px; display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.dash-gallery-info span { font-size: 12px; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* VIDEOS LIST IN DASHBOARD */
+.dash-videos-list {
+  display: flex; flex-direction: column; gap: 12px; margin-top: 20px;
+}
+.dash-video-item {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px; border-radius: 10px; border: 1px solid var(--border);
+  background: rgba(255,255,255,0.02); gap: 16px;
+}
+.dash-video-meta { display: flex; align-items: center; gap: 12px; overflow: hidden; }
+.dash-video-thumb { width: 64px; aspect-ratio: 16/9; border-radius: 4px; object-fit: cover; }
+.dash-video-details { overflow: hidden; }
+.dash-video-title { font-size: 14px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.dash-video-subject { font-size: 11px; text-transform: uppercase; font-weight: 700; color: var(--sky); margin-top: 2px; }
+</style>
+</head>
+<body>
+
+<!-- AUTH LOCK SCREEN -->
+<div class="lock-screen" id="lockScreen">
+  <div class="lock-card">
+    <div class="lock-icon">🔒</div>
+    <h2>Admin Access</h2>
+    <p>Please enter the administrator password to manage enquiries and website content.</p>
+    <input type="password" class="lock-input" id="passwordInput" placeholder="••••••••" onkeydown="if(event.key==='Enter') verifyPassword()">
+    <button class="lock-btn" onclick="verifyPassword()">Verify Password</button>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="brand">
+    <h1>Cognition Academy</h1>
+    <p>Admin Operations & Content Control Panel</p>
+  </div>
+  <div class="header-actions">
+    <button class="btn-secondary" onclick="logoutAdmin()">🚪 Logout</button>
+  </div>
+</header>
+
+<!-- NAVIGATION TABS -->
+<div class="tabs">
+  <button class="tab-link active" onclick="switchTab('enquiries', this)">📋 Enquiries</button>
+  <button class="tab-link" onclick="switchTab('gallery', this)">🖼️ Gallery</button>
+  <button class="tab-link" onclick="switchTab('results', this)">🏆 Results</button>
+  <button class="tab-link" onclick="switchTab('testimonials', this)">💬 Testimonials</button>
+  <button class="tab-link" onclick="switchTab('videos', this)">📺 Video Lectures</button>
+</div>
+
+<!-- PANELS -->
+
+<!-- TAB 1: ENQUIRIES -->
+<div class="panel active" id="panel-enquiries">
+  <div class="controls-grid">
+    <div class="control-item">
+      <label>Search Student</label>
+      <input type="text" class="search-input" id="searchName" placeholder="Type name to search..." oninput="filterEnquiriesTable()">
+    </div>
+    <div class="control-item">
+      <label>Filter Course</label>
+      <select class="select-input" id="filterCourse" onchange="filterEnquiriesTable()">
+        <option value="all">All Courses</option>
+        <option>IIT-JEE (Mains + Advanced)</option>
+        <option>NEET</option>
+        <option>BITSAT</option>
+        <option>Both JEE & NEET</option>
+      </select>
+    </div>
+    <div class="control-item">
+      <label>Filter Class</label>
+      <select class="select-input" id="filterClass" onchange="filterEnquiriesTable()">
+        <option value="all">All Classes</option>
+        <option>Class 9</option>
+        <option>Class 10</option>
+        <option>Class 11</option>
+        <option>Class 12</option>
+        <option>Dropper (12th Pass)</option>
+      </select>
+    </div>
+    <div class="control-item">
+      <label>Filter Status</label>
+      <select class="select-input" id="filterStatus" onchange="filterEnquiriesTable()">
+        <option value="all">All Statuses</option>
+        <option value="Pending">Pending</option>
+        <option value="Contacted">Contacted</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Student Name</th>
+            <th>Phone</th>
+            <th>Class</th>
+            <th>Course Interest</th>
+            <th>Status</th>
+            <th>Notes & Remarks</th>
+            <th style="text-align: right;">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="enquiriesTableBody">
+          <!-- Rendered dynamically -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- TAB 2: GALLERY -->
+<div class="panel" id="panel-gallery">
+  <div class="upload-grid">
+    <div class="card">
+      <h3 style="margin-bottom: 16px;">🖼️ Add New Photo</h3>
+      <div class="form-group">
+        <label>Photo Caption / Title</label>
+        <input type="text" class="form-input" id="photoTitle" placeholder="e.g. JEE Batch Celebration">
+      </div>
+      <div class="form-group">
+        <label>Select Photo File</label>
+        <div class="upload-zone" id="uploadZone" onclick="document.getElementById('fileInput').click()">
+          <svg viewBox="0 0 24 24"><path d="M19.35 10.04A7.49 7.49 0 0 0 12 4C9.11 4 6.6 5.64 5.35 8.04A5.994 5.994 0 0 0 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"/></svg>
+          <p>Drag & drop photo here or <span>browse</span></p>
+          <input type="file" id="fileInput" style="display:none" accept="image/*" onchange="handleFileSelect(event)">
+        </div>
+        <div id="fileInfo" style="margin-top: 8px; font-size: 12px; color: var(--sky); font-weight: 600; display: none;"></div>
+      </div>
+      <button class="btn-primary" style="width:100%; justify-content:center;" onclick="uploadPhoto()">🚀 Upload Photo</button>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom: 16px;">Photos Gallery Grid</h3>
+      <div class="dash-gallery-grid" id="dashGalleryGrid">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TAB 4: RESULTS -->
+<div class="panel" id="panel-results">
+  <div class="upload-grid">
+    <div class="card">
+      <h3 style="margin-bottom: 16px;">🏆 Add New Topper Card</h3>
+      <div class="form-group">
+        <label>Student Name / Info</label>
+        <input type="text" class="form-input" id="resultName" placeholder="e.g. Kedar Somalwar (IIT-JEE)">
+      </div>
+      <div class="form-group">
+        <label>Year Selection</label>
+        <select class="form-input" id="resultYearSelect" onchange="toggleCustomYearInput(this.value)">
+          <option value="2025">2025</option>
+          <option value="2024">2024</option>
+          <option value="2023">2023</option>
+          <option value="2022">2022</option>
+          <option value="2020">2020</option>
+          <option value="custom">-- Custom Year --</option>
+        </select>
+      </div>
+      <div class="form-group" id="customYearGroup" style="display: none;">
+        <label>Enter Custom Year</label>
+        <input type="text" class="form-input" id="resultYearCustom" placeholder="e.g. 2026">
+      </div>
+      <div class="form-group">
+        <label>Select Topper Rank Card (3:4 ratio recommended)</label>
+        <div class="upload-zone" id="resultUploadZone" onclick="document.getElementById('resultFileInput').click()">
+          <svg viewBox="0 0 24 24"><path d="M19.35 10.04A7.49 7.49 0 0 0 12 4C9.11 4 6.6 5.64 5.35 8.04A5.994 5.994 0 0 0 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"/></svg>
+          <p>Drag & drop topper image here or <span>browse</span></p>
+          <input type="file" id="resultFileInput" style="display:none" accept="image/*" onchange="handleResultFileSelect(event)">
+        </div>
+        <div id="resultFileInfo" style="margin-top: 8px; font-size: 12px; color: var(--sky); font-weight: 600; display: none;"></div>
+      </div>
+      <button class="btn-primary" style="width:100%; justify-content:center;" onclick="uploadResult()">🚀 Add Topper Card</button>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom: 16px;">Results Topper Cards</h3>
+      <div class="dash-gallery-grid" id="dashResultsGrid">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TAB 5: TESTIMONIALS -->
+<div class="panel" id="panel-testimonials">
+  <div class="upload-grid">
+    <div class="card">
+      <h3 style="margin-bottom: 16px;">💬 Add Video Testimonial</h3>
+      <div class="form-group">
+        <label>Student Name</label>
+        <input type="text" class="form-input" id="testimonialName" placeholder="e.g. Anushka Jambulkar">
+      </div>
+      <div class="form-group">
+        <label>College / Batch / Year Description</label>
+        <input type="text" class="form-input" id="testimonialCollege" placeholder="e.g. NIT Surat — 2024">
+      </div>
+      <div class="form-group">
+        <label>Select Testimonial Video File (.mp4, max 100MB)</label>
+        <div class="upload-zone" id="testimonialUploadZone" onclick="document.getElementById('testimonialFileInput').click()">
+          <svg viewBox="0 0 24 24"><path d="M19.35 10.04A7.49 7.49 0 0 0 12 4C9.11 4 6.6 5.64 5.35 8.04A5.994 5.994 0 0 0 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"/></svg>
+          <p>Drag & drop MP4 video here or <span>browse</span></p>
+          <input type="file" id="testimonialFileInput" style="display:none" accept="video/mp4" onchange="handleTestimonialFileSelect(event)">
+        </div>
+        <div id="testimonialFileInfo" style="margin-top: 8px; font-size: 12px; color: var(--sky); font-weight: 600; display: none;"></div>
+      </div>
+      <button class="btn-primary" style="width:100%; justify-content:center;" onclick="uploadTestimonial()">🚀 Upload Testimonial</button>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom: 16px;">Video Testimonials List</h3>
+      <div class="dash-gallery-grid" id="dashTestimonialsGrid">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TAB 3: VIDEOS -->
+<div class="panel" id="panel-videos">
+  <div class="upload-grid">
+    <div class="card">
+      <h3 style="margin-bottom: 16px;">📺 Register Video Lecture</h3>
+      <div class="form-group">
+        <label>Subject</label>
+        <select class="form-input" id="videoSubject">
+          <option value="physics">⚡ Physics</option>
+          <option value="chemistry">🧪 Chemistry</option>
+          <option value="maths">📐 Maths</option>
+          <option value="biology">🧬 Biology</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Video Lecture Title</label>
+        <input type="text" class="form-input" id="videoTitle" placeholder="e.g. Newton's Laws of Motion - Lecture 1">
+      </div>
+      <div class="form-group">
+        <label>YouTube Link or Video ID</label>
+        <input type="text" class="form-input" id="videoUrlInput" placeholder="e.g. https://www.youtube.com/watch?v=UAmJdGObjuU" oninput="parseYoutubeLink(this.value)">
+        <div id="parsedVideoIdInfo" style="margin-top: 6px; font-size: 11px; color: var(--text-muted);">
+          Parsed Video ID: <strong id="parsedIdText" style="color:var(--sky)">None</strong>
+        </div>
+      </div>
+      <button class="btn-primary" style="width:100%; justify-content:center;" onclick="registerVideo()">➕ Add Video Lecture</button>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom: 16px;">Lecture Videos List</h3>
+      <div class="dash-videos-list" id="dashVideosList">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DETAILS MODAL -->
+<div class="modal" id="detailsModal" onclick="closeModalOutside(event)">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeDetailsModal()">&times;</button>
+    <div class="modal-title" id="mStudentName">Student Details</div>
+    <div class="modal-grid">
+      <div class="modal-item">
+        <label>Parent Name</label>
+        <p id="mParentName">-</p>
+      </div>
+      <div class="modal-item">
+        <label>Current Class</label>
+        <p id="mClass">-</p>
+      </div>
+      <div class="modal-item">
+        <label>Phone Number</label>
+        <p><a href="" id="mPhone" style="color: var(--sky); text-decoration: none;">-</a></p>
+      </div>
+      <div class="modal-item">
+        <label>WhatsApp Number</label>
+        <p><a href="" id="mWhatsapp" style="color: var(--sky); text-decoration: none;">-</a></p>
+      </div>
+      <div class="modal-item">
+        <label>School / College</label>
+        <p id="mSchool">-</p>
+      </div>
+      <div class="modal-item">
+        <label>Enquiry Date</label>
+        <p id="mDate">-</p>
+      </div>
+      <div class="modal-item modal-item-full">
+        <label>Message / Query</label>
+        <p id="mMessage" style="background: rgba(255,255,255,0.03); padding: 12px; border-radius: 8px; border: 1px solid var(--border); font-size: 13px; white-space: pre-wrap; line-height: 1.5; color: #e5e7eb;">-</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST CONTAINER -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- JAVASCRIPT -->
+<script>
+// Helper to resolve API URLs (handles Live Server and file protocol)
+function getApiUrl(endpoint) {
+  if (window.location.protocol === 'file:') {
+    return `http://localhost:3000${endpoint}`;
+  }
+  if (window.location.port && window.location.port !== '3000') {
+    return `${window.location.protocol}//${window.location.hostname}:3000${endpoint}`;
+  }
+  return endpoint;
+}
+
+let adminPassword = localStorage.getItem('adminPassword') || '';
+let allEnquiries = [];
+let selectedFile = null;
+let selectedResultFile = null;
+let selectedTestimonialFile = null;
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', () => {
+  if (adminPassword) {
+    verifyStoredPassword();
+  }
+  setupDragAndDrop();
+  setupResultsDragAndDrop();
+  setupTestimonialsDragAndDrop();
+});
+
+// Show Toast Alert
+function showToast(message, type = 'success') {
+  const container = document.getElementById('toastContainer');
+  const toast = document.createElement('div');
+  toast.className = `toast ${type}`;
+  toast.innerHTML = `
+    <span>${message}</span>
+    <span style="cursor:pointer;margin-left:12px;font-size:12px;opacity:0.6" onclick="this.parentElement.remove()">×</span>
+  `;
+  container.appendChild(toast);
+  setTimeout(() => toast.remove(), 4000);
+}
+
+// Password verification
+async function verifyStoredPassword() {
+  try {
+    const response = await fetch(getApiUrl('/api/admin/verify'), {
+      headers: { 'Authorization': adminPassword }
+    });
+    if (response.ok) {
+      document.getElementById('lockScreen').style.opacity = '0';
+      setTimeout(() => document.getElementById('lockScreen').style.display = 'none', 300);
+      loadAllDashboardData();
+    } else {
+      localStorage.removeItem('adminPassword');
+      adminPassword = '';
+    }
+  } catch (err) {
+    console.error(err);
+    showToast('Cannot connect to server.', 'error');
+  }
+}
+
+async function verifyPassword() {
+  const input = document.getElementById('passwordInput').value;
+  if (!input) {
+    showToast('Please enter password', 'error');
+    return;
+  }
+  try {
+    const response = await fetch(getApiUrl('/api/admin/verify'), {
+      headers: { 'Authorization': input }
+    });
+    if (response.ok) {
+      localStorage.setItem('adminPassword', input);
+      adminPassword = input;
+      document.getElementById('lockScreen').style.opacity = '0';
+      setTimeout(() => document.getElementById('lockScreen').style.display = 'none', 300);
+      loadAllDashboardData();
+      showToast('Login successful!');
+    } else {
+      showToast('Incorrect administrator password.', 'error');
+    }
+  } catch (err) {
+    console.error(err);
+    showToast('Failed to connect to server.', 'error');
+  }
+}
+
+function logoutAdmin() {
+  localStorage.removeItem('adminPassword');
+  window.location.reload();
+}
+
+// Switch tabs
+function switchTab(tabName, btn) {
+  document.querySelectorAll('.tab-link').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  
+  btn.classList.add('active');
+  document.getElementById(`panel-${tabName}`).classList.add('active');
+}
+
+// Load data
+function loadAllDashboardData() {
+  fetchEnquiries();
+  fetchGallery();
+  fetchVideos();
+  fetchResults();
+  fetchTestimonials();
+}
+
+/* ==================== ENQUIRIES CONTROLLERS ==================== */
+
+async function fetchEnquiries() {
+  try {
+    const response = await fetch(getApiUrl('/api/admin/enquiries'), {
+      headers: { 'Authorization': adminPassword }
+    });
+    if (!response.ok) throw new Error('Failed to fetch enquiries.');
+    const data = await response.json();
+    allEnquiries = data.enquiries || [];
+    renderEnquiriesTable(allEnquiries);
+  } catch (err) {
+    console.error(err);
+    showToast('Error loading enquiries.', 'error');
+  }
+}
+
+function renderEnquiriesTable(enquiries) {
+  const tbody = document.getElementById('enquiriesTableBody');
+  tbody.innerHTML = '';
+  if (enquiries.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="7" style="text-align:center;color:var(--text-muted);padding:30px;">No enquiries found.</td></tr>`;
+    return;
+  }
+
+  enquiries.forEach(eq => {
+    const row = document.createElement('tr');
+    const cleanDate = new Date(eq.createdAt).toLocaleDateString('en-IN', {
+      day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit'
+    });
+
+    row.innerHTML = `
+      <td style="font-weight: 600; cursor: pointer; color: var(--sky);" onclick="openDetailsModal('${eq._id}')">${eq.studentName}</td>
+      <td><a href="tel:${eq.phone}" style="color:var(--text); text-decoration:none;">📞 ${eq.phone}</a></td>
+      <td><span style="font-weight:500;">${eq.currentClass || '-'}</span></td>
+      <td><span style="color:#c9d8f0; font-weight:500;">${eq.course}</span></td>
+      <td>
+        <select class="action-select" onchange="updateEnquiryStatus('${eq._id}', this.value)">
+          <option value="Pending" ${eq.status === 'Pending' ? 'selected' : ''}>🔴 Pending</option>
+          <option value="Contacted" ${eq.status === 'Contacted' ? 'selected' : ''}>🟢 Contacted</option>
+        </select>
+      </td>
+      <td>
+        <div class="notes-input-wrapper">
+          <input type="text" class="notes-table-input" id="notes-${eq._id}" value="${eq.notes || ''}" placeholder="Click save to update remarks...">
+          <button class="btn-save-notes" onclick="updateEnquiryNotes('${eq._id}')">💾</button>
+        </div>
+      </td>
+      <td style="text-align: right;">
+        <button class="btn-delete" onclick="deleteEnquiry('${eq._id}')">Delete</button>
+      </td>
+    `;
+    tbody.appendChild(row);
+  });
+}
+
+function filterEnquiriesTable() {
+  const searchName = document.getElementById('searchName').value.toLowerCase().trim();
+  const filterCourse = document.getElementById('filterCourse').value;
+  const filterClass = document.getElementById('filterClass').value;
+  const filterStatus = document.getElementById('filterStatus').value;
+
+  const filtered = allEnquiries.filter(eq => {
+    const matchesName = eq.studentName.toLowerCase().includes(searchName) || (eq.phone && eq.phone.includes(searchName));
+    const matchesCourse = filterCourse === 'all' || eq.course === filterCourse;
+    const matchesClass = filterClass === 'all' || eq.currentClass === filterClass;
+    const matchesStatus = filterStatus === 'all' || eq.status === filterStatus;
+    return matchesName && matchesCourse && matchesClass && matchesStatus;
+  });
+
+  renderEnquiriesTable(filtered);
+}
+
+async function updateEnquiryStatus(id, newStatus) {
+  try {
+    const notesInput = document.getElementById(`notes-${id}`);
+    const notes = notesInput ? notesInput.value.trim() : '';
+
+    const response = await fetch(getApiUrl(`/api/admin/enquiries/${id}`), {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': adminPassword
+      },
+      body: JSON.stringify({ status: newStatus, notes })
+    });
+    if (!response.ok) throw new Error('Failed to update status.');
+    
+    // Update local state
+    const index = allEnquiries.findIndex(eq => eq._id === id);
+    if (index !== -1) allEnquiries[index].status = newStatus;
+    
+    showToast('Enquiry status updated!');
+    filterEnquiriesTable();
+  } catch (err) {
+    console.error(err);
+    showToast('Error updating status.', 'error');
+  }
+}
+
+async function updateEnquiryNotes(id) {
+  try {
+    const notesInput = document.getElementById(`notes-${id}`);
+    const notes = notesInput ? notesInput.value.trim() : '';
+    
+    // Find current status
+    const eqLocal = allEnquiries.find(eq => eq._id === id);
+    const status = eqLocal ? eqLocal.status : 'Pending';
+
+    const response = await fetch(getApiUrl(`/api/admin/enquiries/${id}`), {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': adminPassword
+      },
+      body: JSON.stringify({ status, notes })
+    });
+    if (!response.ok) throw new Error('Failed to update notes.');
+    
+    if (eqLocal) eqLocal.notes = notes;
+    showToast('Admin notes saved successfully!');
+  } catch (err) {
+    console.error(err);
+    showToast('Error saving remarks.', 'error');
+  }
+}
+
+async function deleteEnquiry(id) {
+  if (!confirm('Are you sure you want to delete this enquiry? This action is permanent.')) return;
+  try {
+    const response = await fetch(getApiUrl(`/api/admin/enquiries/${id}`), {
+      method: 'DELETE',
+      headers: { 'Authorization': adminPassword }
+    });
+    if (!response.ok) throw new Error('Failed to delete.');
+    
+    allEnquiries = allEnquiries.filter(eq => eq._id !== id);
+    showToast('Enquiry record deleted.');
+    filterEnquiriesTable();
+  } catch (err) {
+    console.error(err);
+    showToast('Error deleting enquiry.', 'error');
+  }
+}
+
+function openDetailsModal(id) {
+  const eq = allEnquiries.find(eq => eq._id === id);
+  if (!eq) return;
+
+  document.getElementById('mStudentName').textContent = eq.studentName;
+  document.getElementById('mParentName').textContent = eq.parentName || 'Not specified';
+  document.getElementById('mClass').textContent = eq.currentClass || 'Not specified';
+  
+  document.getElementById('mPhone').textContent = eq.phone;
+  document.getElementById('mPhone').href = `tel:${eq.phone}`;
+  
+  if (eq.whatsapp) {
+    document.getElementById('mWhatsapp').textContent = eq.whatsapp;
+    document.getElementById('mWhatsapp').href = `https://wa.me/91${eq.whatsapp}`;
+  } else {
+    document.getElementById('mWhatsapp').textContent = 'Same as phone';
+    document.getElementById('mWhatsapp').href = `https://wa.me/91${eq.phone}`;
+  }
+
+  document.getElementById('mSchool').textContent = eq.school || 'Not specified';
+  document.getElementById('mDate').textContent = new Date(eq.createdAt).toLocaleString('en-IN');
+  document.getElementById('mMessage').textContent = eq.message || '(No message content supplied)';
+
+  document.getElementById('detailsModal').classList.add('open');
+}
+
+function closeDetailsModal() {
+  document.getElementById('detailsModal').classList.remove('open');
+}
+
+function closeModalOutside(e) {
+  if (e.target === document.getElementById('detailsModal')) closeDetailsModal();
+}
+
+/* ==================== GALLERY CONTROLLERS ==================== */
+
+async function fetchGallery() {
+  try {
+    const response = await fetch(getApiUrl('/api/gallery'));
+    if (!response.ok) throw new Error('Failed to fetch gallery.');
+    const data = await response.json();
+    renderGalleryGrid(data.items || []);
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+function renderGalleryGrid(items) {
+  const grid = document.getElementById('dashGalleryGrid');
+  grid.innerHTML = '';
+  if (items.length === 0) {
+    grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;color:var(--text-muted);padding:30px;">No photos uploaded yet.</div>`;
+    return;
+  }
+
+  items.forEach(photo => {
+    const card = document.createElement('div');
+    card.className = 'dash-gallery-card';
+    card.innerHTML = `
+      <img src="${getApiUrl('/' + photo.imagePath)}" alt="${photo.title || 'Gallery Item'}">
+      <div class="dash-gallery-info">
+        <span title="${photo.title || 'Untitled'}">${photo.title || 'Untitled'}</span>
+        <button class="btn-delete" style="padding: 4px 8px; font-size:10px" onclick="deletePhoto('${photo._id}')">Delete</button>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+function setupDragAndDrop() {
+  const zone = document.getElementById('uploadZone');
+  
+  ['dragenter', 'dragover'].forEach(e => {
+    zone.addEventListener(e, (ev) => {
+      ev.preventDefault(); zone.classList.add('dragover');
+    }, false);
+  });
+  
+  ['dragleave', 'drop'].forEach(e => {
+    zone.addEventListener(e, (ev) => {
+      ev.preventDefault(); zone.classList.remove('dragover');
+    }, false);
+  });
+
+  zone.addEventListener('drop', (ev) => {
+    const dt = ev.dataTransfer;
+    const files = dt.files;
+    if (files.length > 0) {
+      handleFile(files[0]);
+    }
+  }, false);
+}
+
+function handleFileSelect(event) {
+  const file = event.target.files[0];
+  if (file) handleFile(file);
+}
+
+function handleFile(file) {
+  if (!file.type.startsWith('image/')) {
+    showToast('Please select an image file only.', 'error');
+    return;
+  }
+  selectedFile = file;
+  const info = document.getElementById('fileInfo');
+  info.style.display = 'block';
+  info.textContent = `Selected: ${file.name} (${(file.size / 1024).toFixed(1)} KB)`;
+}
+
+async function uploadPhoto() {
+  if (!selectedFile) {
+    showToast('Please select a photo file to upload first.', 'error');
+    return;
+  }
+  
+  const title = document.getElementById('photoTitle').value.trim();
+  const reader = new FileReader();
+  reader.readAsDataURL(selectedFile);
+  
+  reader.onloadend = async () => {
+    const base64Data = reader.result;
+    
+    try {
+      const response = await fetch(getApiUrl('/api/admin/gallery'), {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': adminPassword
+        },
+        body: JSON.stringify({
+          title,
+          imageBase64: base64Data,
+          fileName: selectedFile.name
+        })
+      });
+      
+      const resData = await response.json();
+      if (!response.ok) throw new Error(resData.error || 'Upload failed.');
+      
+      showToast('Photo uploaded successfully!');
+      // Reset form
+      document.getElementById('photoTitle').value = '';
+      document.getElementById('fileInput').value = '';
+      document.getElementById('fileInfo').style.display = 'none';
+      selectedFile = null;
+      
+      fetchGallery();
+    } catch (err) {
+      console.error(err);
+      showToast(err.message || 'Error uploading photo.', 'error');
+    }
+  };
+}
+
+async function deletePhoto(id) {
+  if (!confirm('Are you sure you want to delete this photo from the gallery?')) return;
+  try {
+    const response = await fetch(getApiUrl(`/api/admin/gallery/${id}`), {
+      method: 'DELETE',
+      headers: { 'Authorization': adminPassword }
+    });
+    if (!response.ok) throw new Error('Delete request failed.');
+    showToast('Photo deleted successfully!');
+    fetchGallery();
+  } catch (err) {
+    console.error(err);
+    showToast('Error deleting photo.', 'error');
+  }
+}
+
+/* ==================== VIDEOS CONTROLLERS ==================== */
+
+async function fetchVideos() {
+  try {
+    const response = await fetch(getApiUrl('/api/videos'));
+    if (!response.ok) throw new Error('Failed to fetch videos.');
+    const data = await response.json();
+    renderVideosList(data.items || []);
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+function renderVideosList(items) {
+  const list = document.getElementById('dashVideosList');
+  list.innerHTML = '';
+  if (items.length === 0) {
+    list.innerHTML = `<div style="text-align:center;color:var(--text-muted);padding:30px;">No registered dynamic video lectures.</div>`;
+    return;
+  }
+
+  items.forEach(video => {
+    const el = document.createElement('div');
+    el.className = 'dash-video-item';
+    el.innerHTML = `
+      <div class="dash-video-meta">
+        <img class="dash-video-thumb" src="https://i.ytimg.com/vi/${video.youtubeId}/hqdefault.jpg" alt="Video Thumb" onerror="this.src='https://via.placeholder.com/120x68/0a1e3d/29b6f6?text=Lecture'">
+        <div class="dash-video-details">
+          <div class="dash-video-title" title="${video.title}">${video.title}</div>
+          <div class="dash-video-subject">${video.subject} &nbsp;|&nbsp; ID: ${video.youtubeId}</div>
+        </div>
+      </div>
+      <button class="btn-delete" onclick="deleteVideo('${video._id}')">Delete</button>
+    `;
+    list.appendChild(el);
+  });
+}
+
+// Youtube link parser logic
+function parseYoutubeLink(val) {
+  let videoId = val.trim();
+  if (val.includes('youtube.com') || val.includes('youtu.be')) {
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+    const match = val.match(regExp);
+    if (match && match[2].length === 11) {
+      videoId = match[2];
+    }
+  }
+  
+  const label = document.getElementById('parsedIdText');
+  if (videoId.length === 11) {
+    label.textContent = videoId;
+    label.style.color = 'var(--green)';
+  } else if (videoId === '') {
+    label.textContent = 'None';
+    label.style.color = 'var(--text-muted)';
+  } else {
+    label.textContent = 'Invalid ID/URL';
+    label.style.color = 'var(--red)';
+  }
+}
+
+async function registerVideo() {
+  const subject = document.getElementById('videoSubject').value;
+  const title = document.getElementById('videoTitle').value.trim();
+  const idText = document.getElementById('parsedIdText').textContent;
+  
+  if (!title) {
+    showToast('Please enter video title.', 'error');
+    return;
+  }
+  if (idText === 'None' || idText === 'Invalid ID/URL') {
+    showToast('Please enter a valid YouTube URL or 11-digit Video ID.', 'error');
+    return;
+  }
+
+  try {
+    const response = await fetch(getApiUrl('/api/admin/videos'), {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': adminPassword
+      },
+      body: JSON.stringify({
+        title,
+        youtubeId: idText,
+        subject
+      })
+    });
+    
+    const resData = await response.json();
+    if (!response.ok) throw new Error(resData.error || 'Registration failed.');
+    
+    showToast('Video lecture added to page!');
+    document.getElementById('videoTitle').value = '';
+    document.getElementById('videoUrlInput').value = '';
+    document.getElementById('parsedIdText').textContent = 'None';
+    document.getElementById('parsedIdText').style.color = 'var(--text-muted)';
+    
+    fetchVideos();
+  } catch (err) {
+    console.error(err);
+    showToast(err.message || 'Error registering video.', 'error');
+  }
+}
+
+async function deleteVideo(id) {
+  if (!confirm('Are you sure you want to delete this video lecture?')) return;
+  try {
+    const response = await fetch(getApiUrl(`/api/admin/videos/${id}`), {
+      method: 'DELETE',
+      headers: { 'Authorization': adminPassword }
+    });
+    if (!response.ok) throw new Error('Delete failed.');
+    showToast('Video lecture deleted.');
+    fetchVideos();
+  } catch (err) {
+    console.error(err);
+    showToast('Error deleting video.', 'error');
+  }
+}
+
+/* ==================== RESULTS CONTROLLERS ==================== */
+
+function toggleCustomYearInput(val) {
+  const customGroup = document.getElementById('customYearGroup');
+  if (val === 'custom') {
+    customGroup.style.display = 'block';
+  } else {
+    customGroup.style.display = 'none';
+  }
+}
+
+function setupResultsDragAndDrop() {
+  const zone = document.getElementById('resultUploadZone');
+  if (!zone) return;
+  ['dragenter', 'dragover'].forEach(e => {
+    zone.addEventListener(e, (ev) => {
+      ev.preventDefault(); zone.classList.add('dragover');
+    }, false);
+  });
+  
+  ['dragleave', 'drop'].forEach(e => {
+    zone.addEventListener(e, (ev) => {
+      ev.preventDefault(); zone.classList.remove('dragover');
+    }, false);
+  });
+
+  zone.addEventListener('drop', (ev) => {
+    const dt = ev.dataTransfer;
+    const files = dt.files;
+    if (files.length > 0) {
+      handleResultFile(files[0]);
+    }
+  }, false);
+}
+
+function handleResultFileSelect(event) {
+  const file = event.target.files[0];
+  if (file) handleResultFile(file);
+}
+
+function handleResultFile(file) {
+  if (!file.type.startsWith('image/')) {
+    showToast('Please select an image file only.', 'error');
+    return;
+  }
+  selectedResultFile = file;
+  const info = document.getElementById('resultFileInfo');
+  info.style.display = 'block';
+  info.textContent = `Selected: ${file.name} (${(file.size / 1024).toFixed(1)} KB)`;
+}
+
+async function fetchResults() {
+  try {
+    const response = await fetch(getApiUrl('/api/results'));
+    if (!response.ok) throw new Error('Failed to fetch results.');
+    const data = await response.json();
+    renderResultsGrid(data.items || []);
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+function renderResultsGrid(items) {
+  const grid = document.getElementById('dashResultsGrid');
+  if (!grid) return;
+  grid.innerHTML = '';
+  if (items.length === 0) {
+    grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;color:var(--text-muted);padding:30px;">No topper cards uploaded yet.</div>`;
+    return;
+  }
+
+  items.forEach(item => {
+    const card = document.createElement('div');
+    card.className = 'dash-gallery-card';
+    card.innerHTML = `
+      <img src="${getApiUrl('/' + item.imagePath)}" alt="${item.studentName || 'Topper'}" style="aspect-ratio:3/4;object-fit:contain;background:#fff;">
+      <div class="dash-gallery-info">
+        <span title="${item.studentName || 'Topper'} (${item.year})">${item.studentName || 'Untitled'} (${item.year})</span>
+        <button class="btn-delete" style="padding: 4px 8px; font-size:10px" onclick="deleteResult('${item._id}')">Delete</button>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+async function uploadResult() {
+  if (!selectedResultFile) {
+    showToast('Please select a topper card image file to upload first.', 'error');
+    return;
+  }
+  
+  const studentName = document.getElementById('resultName').value.trim();
+  const yearSelect = document.getElementById('resultYearSelect').value;
+  let year = yearSelect;
+  if (yearSelect === 'custom') {
+    year = document.getElementById('resultYearCustom').value.trim();
+  }
+  
+  if (!year) {
+    showToast('Please specify a year.', 'error');
+    return;
+  }
+
+  showToast('Uploading topper card...', 'info');
+
+  const reader = new FileReader();
+  reader.readAsDataURL(selectedResultFile);
+  
+  reader.onloadend = async () => {
+    const base64Data = reader.result;
+    
+    try {
+      const response = await fetch(getApiUrl('/api/admin/results'), {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': adminPassword
+        },
+        body: JSON.stringify({
+          studentName,
+          imageBase64: base64Data,
+          fileName: selectedResultFile.name,
+          year
+        })
+      });
+      
+      const resData = await response.json();
+      if (!response.ok) throw new Error(resData.error || 'Upload failed.');
+      
+      showToast('Topper card added successfully!');
+      // Reset form
+      document.getElementById('resultName').value = '';
+      document.getElementById('resultFileInput').value = '';
+      document.getElementById('resultFileInfo').style.display = 'none';
+      if (yearSelect === 'custom') {
+        document.getElementById('resultYearCustom').value = '';
+      }
+      selectedResultFile = null;
+      
+      fetchResults();
+    } catch (err) {
+      console.error(err);
+      showToast(err.message || 'Error uploading topper card.', 'error');
+    }
+  };
+}
+
+async function deleteResult(id) {
+  if (!confirm('Are you sure you want to delete this topper card?')) return;
+  try {
+    const response = await fetch(getApiUrl(`/api/admin/results/${id}`), {
+      method: 'DELETE',
+      headers: { 'Authorization': adminPassword }
+    });
+    if (!response.ok) throw new Error('Delete request failed.');
+    showToast('Topper card deleted successfully!');
+    fetchResults();
+  } catch (err) {
+    console.error(err);
+    showToast('Error deleting topper card.', 'error');
+  }
+}
+
+/* ==================== TESTIMONIALS CONTROLLERS ==================== */
+
+function setupTestimonialsDragAndDrop() {
+  const zone = document.getElementById('testimonialUploadZone');
+  if (!zone) return;
+  ['dragenter', 'dragover'].forEach(e => {
+    zone.addEventListener(e, (ev) => {
+      ev.preventDefault(); zone.classList.add('dragover');
+    }, false);
+  });
+  
+  ['dragleave', 'drop'].forEach(e => {
+    zone.addEventListener(e, (ev) => {
+      ev.preventDefault(); zone.classList.remove('dragover');
+    }, false);
+  });
+
+  zone.addEventListener('drop', (ev) => {
+    const dt = ev.dataTransfer;
+    const files = dt.files;
+    if (files.length > 0) {
+      handleTestimonialFile(files[0]);
+    }
+  }, false);
+}
+
+function handleTestimonialFileSelect(event) {
+  const file = event.target.files[0];
+  if (file) handleTestimonialFile(file);
+}
+
+function handleTestimonialFile(file) {
+  if (!file.type.startsWith('video/mp4') && !file.name.endsWith('.mp4')) {
+    showToast('Please select an MP4 video file only.', 'error');
+    return;
+  }
+  if (file.size > 100 * 1024 * 1024) {
+    showToast('File size exceeds 100MB limit.', 'error');
+    return;
+  }
+  selectedTestimonialFile = file;
+  const info = document.getElementById('testimonialFileInfo');
+  info.style.display = 'block';
+  info.textContent = `Selected: ${file.name} (${(file.size / (1024 * 1024)).toFixed(1)} MB)`;
+}
+
+async function fetchTestimonials() {
+  try {
+    const response = await fetch(getApiUrl('/api/testimonials'));
+    if (!response.ok) throw new Error('Failed to fetch testimonials.');
+    const data = await response.json();
+    renderTestimonialsGrid(data.items || []);
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+function renderTestimonialsGrid(items) {
+  const grid = document.getElementById('dashTestimonialsGrid');
+  if (!grid) return;
+  grid.innerHTML = '';
+  if (items.length === 0) {
+    grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;color:var(--text-muted);padding:30px;">No video testimonials uploaded yet.</div>`;
+    return;
+  }
+
+  items.forEach(item => {
+    const card = document.createElement('div');
+    card.className = 'dash-gallery-card';
+    card.innerHTML = `
+      <video style="width:100%;aspect-ratio:16/9;background:#000;" controls preload="metadata">
+        <source src="${getApiUrl('/' + item.videoPath)}" type="video/mp4">
+      </video>
+      <div class="dash-gallery-info">
+        <span title="${item.studentName} (${item.college})">${item.studentName}</span>
+        <button class="btn-delete" style="padding: 4px 8px; font-size:10px" onclick="deleteTestimonial('${item._id}')">Delete</button>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+async function uploadTestimonial() {
+  const studentName = document.getElementById('testimonialName').value.trim();
+  const college = document.getElementById('testimonialCollege').value.trim();
+  
+  if (!studentName || !college) {
+    showToast('Please fill student name and college/description fields.', 'error');
+    return;
+  }
+  
+  if (!selectedTestimonialFile) {
+    showToast('Please select an MP4 video file to upload first.', 'error');
+    return;
+  }
+
+  showToast('Uploading video testimonial... Please wait (this can take a moment for large files).', 'info');
+
+  const reader = new FileReader();
+  reader.readAsDataURL(selectedTestimonialFile);
+  
+  reader.onloadend = async () => {
+    const base64Data = reader.result;
+    
+    try {
+      const response = await fetch(getApiUrl('/api/admin/testimonials'), {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': adminPassword
+        },
+        body: JSON.stringify({
+          studentName,
+          college,
+          videoBase64: base64Data,
+          fileName: selectedTestimonialFile.name
+        })
+      });
+      
+      const resData = await response.json();
+      if (!response.ok) throw new Error(resData.error || 'Upload failed.');
+      
+      showToast('Video testimonial uploaded successfully!');
+      // Reset form
+      document.getElementById('testimonialName').value = '';
+      document.getElementById('testimonialCollege').value = '';
+      document.getElementById('testimonialFileInput').value = '';
+      document.getElementById('testimonialFileInfo').style.display = 'none';
+      selectedTestimonialFile = null;
+      
+      fetchTestimonials();
+    } catch (err) {
+      console.error(err);
+      showToast(err.message || 'Error uploading video testimonial.', 'error');
+    }
+  };
+}
+
+async function deleteTestimonial(id) {
+  if (!confirm('Are you sure you want to delete this video testimonial?')) return;
+  try {
+    const response = await fetch(getApiUrl(`/api/admin/testimonials/${id}`), {
+      method: 'DELETE',
+      headers: { 'Authorization': adminPassword }
+    });
+    if (!response.ok) throw new Error('Delete request failed.');
+    showToast('Testimonial deleted successfully!');
+    fetchTestimonials();
+  } catch (err) {
+    console.error(err);
+    showToast('Error deleting testimonial.', 'error');
+  }
+}
+</script>
+</body>
+</html>

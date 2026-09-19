@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Faculty | Cognition Academy | Wardha</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Raleway:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body style="background-image: url('photos/background.jpeg'); background-size: 400px auto; background-repeat: repeat; background-attachment: fixed; background-color: #eef3fb;">
+
+<!-- NAV -->
+<nav>
+  <!-- Hamburger Button -->
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <a class="nav-brand" href="index.html">
+    <div class="nav-logo-circle">
+      <img src="logo.jpeg" alt="Cognition Academy Logo" style="width:38px; height:38px; border-radius:50%; object-fit:cover;">
+    </div>
+    <div class="nav-brand-text">
+      <div class="nav-brand-sub">Navodaya Alumni's</div>
+      <div class="nav-brand-name">Cognition Academy</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="courses.html">All Courses</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="results.html">Results</a></li>
+    <li><a href="faculty.html">Faculty</a></li>
+    <li><a href="features.html">Features</a></li>
+    <li><a href="curriculum.html">Curriculum</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="testimonials.html">Testimonials</a></li>
+    <li><a href="videos.html" class="nav-videos">▶ Videos</a></li>
+    <li><a href="tests.html">Test Series</a></li>
+    <li><a href="enquiry.html" class="nav-enquiry">Enquiry</a></li>
+    <li><a href="login.html" class="nav-login-btn">Login</a></li>
+  </ul>
+</nav>
+
+<!-- Mobile Nav Overlay -->
+<div class="mobile-nav-overlay" id="mobileOverlay" onclick="toggleMenu()"></div>
+
+<!-- Mobile Nav Drawer -->
+<div class="mobile-nav-drawer" id="mobileDrawer">
+  <div class="mobile-nav-header">
+    <img src="logo.jpeg" alt="Logo">
+    <div class="brand-text">
+      <div class="brand-sub">Navodaya Alumni's</div>
+      <div class="brand-name">Cognition Academy</div>
+    </div>
+  </div>
+  <ul class="mobile-nav-links">
+    <li><a href="index.html">🏠 Home</a></li>
+    <li><a href="courses.html">📖 All Courses</a></li>
+    <li><a href="about.html">ℹ️ About</a></li>
+    <li><a href="results.html">🏆 Results</a></li>
+    <li><a href="faculty.html">👨‍🏫 Faculty</a></li>
+    <li><a href="features.html">⭐ Features</a></li>
+    <li><a href="curriculum.html">📚 Curriculum</a></li>
+    <li><a href="gallery.html">🖼️ Gallery</a></li>
+    <li><a href="testimonials.html">💬 Testimonials</a></li>
+    <li class="mobile-videos-link"><a href="videos.html">▶️ Free Videos</a></li>
+    <li><a href="tests.html">📝 Test Series</a></li>
+    <li><a href="enquiry.html">📋 Enquiry</a></li>
+    <li class="mobile-login-link"><a href="login.html">🔐 Login / Sign Up</a></li>
+  </ul>
+  <div class="mobile-nav-footer">
+    <p>📍 Karale Building, Kelkarwadi, Wardha</p>
+    <a href="tel:9834683450">📞 9834683450 | 7387350221</a>
+  </div>
+</div>
+
+<!-- FACULTY -->
+<section class="faculty features" id="faculty">
+  <div class="section-label">Expert Team</div>
+  <h2 class="section-title">Our Faculty</h2>
+  <div class="section-divider"></div>
+
+  <!-- Teacher Intro Video -->
+  <div style="max-width:780px; margin: 0 auto 48px; background:#fff; border-radius:16px; overflow:hidden; box-shadow:0 4px 24px rgba(10,30,61,0.1); border-top:3px solid var(--sky);">
+    <video controls preload="metadata" style="width:100%; aspect-ratio:16/9; display:block; background:#000;">
+      <source src="videos/Teachers intro video.mp4" type="video/mp4">
+    </video>
+    <div style="padding:16px 20px 20px;">
+      <div style="font-size:11px;font-weight:800;color:var(--sky);letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">Meet Our Team</div>
+      <div style="font-family:'Playfair Display',serif;font-size:18px;font-weight:800;color:var(--navy);">Cognition Academy — Faculty Introduction</div>
+      <div style="font-size:13px;color:#666;margin-top:4px;">Expert faculty from Navodaya — dedicated to IIT-JEE & NEET preparation</div>
+    </div>
+  </div>
+
+  <div class="faculty-grid">
+    <div class="faculty-card">
+      <img class="faculty-photo" src="photos/teacher 2.jpeg" alt="Kunal Sir">
+      <div class="faculty-info">
+        <h4>Kunal Sir <small style="font-size:11px;color:var(--gray)">(M.Sc., RTMNU)</small></h4>
+        <div class="dept">Biology</div>
+        <p>He is known for his dedication towards teaching. His simplicity combined with devotion and commitment makes students feel at ease in his class. Thanks to his enormous patience, he is able to work with even the weakest of the students at one to one level and clear their concepts.</p>
+      </div>
+    </div>
+    <div class="faculty-card">
+      <img class="faculty-photo" src="photos/teacher 3.jpeg" alt="Rahul Sir">
+      <div class="faculty-info">
+        <h4>Rahul Sir <small style="font-size:11px;color:var(--gray)">(M.Sc., RTMNU)</small></h4>
+        <div class="dept">Mathematics</div>
+        <p>A great motivator and fabulous maths teacher in the Wardha region. He involves the class in exploring his subject on a conceptual level thus enabling all the students to have crisp understanding of the subject. He strongly believes mathematics is the mother of science.</p>
+      </div>
+    </div>
+    <div class="faculty-card">
+      <img class="faculty-photo" src="photos/teacher 4.jpeg" alt="Ankush Sir">
+      <div class="faculty-info">
+        <h4>Ankush Sir <small style="font-size:11px;color:var(--gray)">(VNIT, Nagpur)</small></h4>
+        <div class="dept">Physics</div>
+        <p>He has well established name in IIT-JEE coaching. Over the years of teaching experience, he has come with innovative methods of explanation by which his students feel the subject easier and excel in it. According to him physics can be best understood by relating it with daily life observations.</p>
+      </div>
+    </div>
+    <div class="faculty-card">
+      <img class="faculty-photo" src="photos/teacher 5.jpeg" alt="Pranay Sir">
+      <div class="faculty-info">
+        <h4>Pranay Sir <small style="font-size:11px;color:var(--gray)">(Ex-Super 30)</small></h4>
+        <div class="dept">Chemistry</div>
+        <p>His teaching methodology is concept oriented and based upon intellect rather than memorization that has been crucial for success in final examination of various competitive examinations. "CHEMISTRY IS ALL ABOUT CONCEPTS AND EXCEPTIONS FOR IT."</p>
+      </div>
+    </div>
+    <div class="faculty-card">
+      <img class="faculty-photo" src="photos/teacher 6.jpeg" alt="Akshay Sir">
+      <div class="faculty-info">
+        <h4>Akshay Sir <small style="font-size:11px;color:var(--gray)">(YCCE, Nagpur)</small></h4>
+        <div class="dept">Chemistry</div>
+        <p>He is extremely passionate and energetic teacher. His devotion for the subject made him one of the most popular faculty of Nagpur region. His unique and easier approach towards JEE chemistry uplifts students to the level he/she not merely accumulates knowledge but possible dimensions in life.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2025 <strong>Navodaya Alumni's Cognition Academy</strong>, Wardha &nbsp;|&nbsp; IIT-JEE | NEET &nbsp;|&nbsp; <strong>Your Belief! Our Responsibility!</strong></p>
+</footer>
+
+<script>
+const revealEls = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+revealEls.forEach(el => observer.observe(el));
+function toggleMenu() {
+  const drawer = document.getElementById("mobileDrawer");
+  const overlay = document.getElementById("mobileOverlay");
+  const ham = document.getElementById("hamburger");
+  drawer.classList.toggle("open");
+  overlay.classList.toggle("open");
+  ham.classList.toggle("open");
+}
+</script>
+<!-- WHATSAPP FLOAT -->
+<div class="whatsapp-float">
+  <span class="whatsapp-tooltip">Chat on WhatsApp</span>
+  <a class="whatsapp-btn" href="https://wa.me/917387350221" target="_blank" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+</div>
+<!-- CALL FLOAT -->
+<div class="call-float">
+  <span class="call-tooltip">Call Us Now</span>
+  <a class="call-btn" href="javascript:void(0)" onclick="openCallPopup()" aria-label="Call">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+  </a>
+</div>
+<!-- CALL POPUP -->
+<div class="call-popup-overlay" id="callOverlay" onclick="closeCallPopup()"></div>
+<div class="call-popup" id="callPopup">
+  <div class="call-popup-header">
+    <div class="cp-icon">📞</div>
+    <div>
+      <div class="cp-title">Talk to a Counsellor</div>
+      <div class="cp-sub">Have doubts? We are happy to help!</div>
+    </div>
+    <button class="call-popup-close" onclick="closeCallPopup()">×</button>
+  </div>
+  <div class="call-popup-body">
+    <div class="cp-label">Call Us Now</div>
+    <div class="call-popup-numbers">
+      <a href="tel:+917387350221">
+        <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        7387350221
+      </a>
+    </div>
+    <a class="call-popup-wa" href="https://wa.me/917387350221" target="_blank">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Chat on WhatsApp
+    </a>
+  </div>
+</div>
+<script>
+function openCallPopup() {
+  document.getElementById("callPopup").classList.add("open");
+  document.getElementById("callOverlay").classList.add("open");
+}
+function closeCallPopup() {
+  document.getElementById("callPopup").classList.remove("open");
+  document.getElementById("callOverlay").classList.remove("open");
+}
+</script>
+</body>
+</html>

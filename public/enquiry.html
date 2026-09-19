@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admission Enquiry | Cognition Academy | Wardha</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Raleway:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <!-- Hamburger Button -->
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <a class="nav-brand" href="index.html">
+    <div class="nav-logo-circle">
+      <img src="logo.jpeg" alt="Cognition Academy Logo" style="width:38px; height:38px; border-radius:50%; object-fit:cover;">
+    </div>
+    <div class="nav-brand-text">
+      <div class="nav-brand-sub">Navodaya Alumni's</div>
+      <div class="nav-brand-name">Cognition Academy</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="results.html">Results</a></li>
+    <li><a href="faculty.html">Faculty</a></li>
+    <li><a href="features.html">Features</a></li>
+    <li><a href="curriculum.html">Curriculum</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="testimonials.html">Testimonials</a></li>
+    <li><a href="videos.html" class="nav-videos">▶ Videos</a></li>
+    <li><a href="tests.html">Test Series</a></li>
+    <li><a href="enquiry.html" class="nav-enquiry">Enquiry</a></li>
+    <li><a href="login.html" class="nav-login-btn">Login</a></li>
+  </ul>
+</nav>
+
+<!-- Mobile Nav Overlay -->
+<div class="mobile-nav-overlay" id="mobileOverlay" onclick="toggleMenu()"></div>
+
+<!-- Mobile Nav Drawer -->
+<div class="mobile-nav-drawer" id="mobileDrawer">
+  <div class="mobile-nav-header">
+    <img src="logo.jpeg" alt="Logo">
+    <div class="brand-text">
+      <div class="brand-sub">Navodaya Alumni's</div>
+      <div class="brand-name">Cognition Academy</div>
+    </div>
+  </div>
+  <ul class="mobile-nav-links">
+    <li><a href="index.html">🏠 Home</a></li>
+    <li><a href="about.html">ℹ️ About</a></li>
+    <li><a href="results.html">🏆 Results</a></li>
+    <li><a href="faculty.html">👨‍🏫 Faculty</a></li>
+    <li><a href="features.html">⭐ Features</a></li>
+    <li><a href="curriculum.html">📚 Curriculum</a></li>
+    <li><a href="gallery.html">🖼️ Gallery</a></li>
+    <li><a href="testimonials.html">💬 Testimonials</a></li>
+    <li class="mobile-videos-link"><a href="videos.html">▶️ Free Videos</a></li>
+    <li><a href="tests.html">📝 Test Series</a></li>
+    <li><a href="enquiry.html">📋 Enquiry</a></li>
+    <li class="mobile-login-link"><a href="login.html">🔐 Login / Sign Up</a></li>
+  </ul>
+  <div class="mobile-nav-footer">
+    <p>📍 Karale Building, Kelkarwadi, Wardha</p>
+    <a href="tel:9834683450">📞 9834683450 | 7387350221</a>
+  </div>
+</div>
+
+<!-- ENQUIRY FORM -->
+<section class="enquiry-section reveal" id="enquiry" style="padding: 72px 5%;">
+  <div class="section-label">Join Us</div>
+  <h2 class="section-title">Admission Enquiry</h2>
+  <div class="section-divider"></div>
+
+  <div class="enquiry-wrapper">
+    <div class="enquiry-info">
+      <h3>Start Your Journey to IIT / NEET Success!</h3>
+      <p>Fill in the form and our team will get back to you within 24 hours. We look forward to welcoming you to the Cognition Academy family.</p>
+      <ul class="enquiry-points">
+        <li>Expert faculty from NAVODAYA background</li>
+        <li>Proven track record — IITs, AIIMS, NITs selections</li>
+        <li>Personal attention & doubt clearing sessions</li>
+        <li>Structured curriculum for JEE & NEET</li>
+        <li>Regular tests & performance tracking</li>
+        <li>Career counseling & guidance</li>
+      </ul>
+
+      <div style="margin-top: 32px; background: var(--navy); border-radius: 10px; padding: 22px 24px;">
+        <p style="color: var(--sky); font-size: 12px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px;">Contact Directly</p>
+        <p style="color: #c9d8f0; font-size: 15px; font-weight: 700; margin-bottom: 8px;">📞 9834683450 &nbsp;|&nbsp; 7387350221</p>
+        <p style="color: #c9d8f0; font-size: 14px;">📍 Karale Building, Kelkarwadi, Wardha</p>
+        <a href="https://wa.me/917387350221" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; margin-top: 16px; background: #25d366; color: #fff; padding: 10px 20px; border-radius: 6px; font-weight: 700; font-size: 14px; text-decoration: none;">
+          <svg style="width:18px;height:18px;fill:#fff;" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp Us
+        </a>
+      </div>
+    </div>
+
+    <div class="enquiry-form">
+      <h4>📋 Fill Enquiry Form</h4>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Student Name *</label>
+          <input type="text" id="studentName" placeholder="Full name" required>
+        </div>
+        <div class="form-group">
+          <label>Parent Name *</label>
+          <input type="text" id="parentName" placeholder="Father / Mother name">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Phone Number *</label>
+          <input type="tel" id="phone" placeholder="10-digit number" required>
+        </div>
+        <div class="form-group">
+          <label>WhatsApp Number</label>
+          <input type="tel" id="whatsapp" placeholder="If different">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Current Class *</label>
+          <select id="currentClass">
+            <option value="">Select class</option>
+            <option>Class 9</option>
+            <option>Class 10</option>
+            <option>Class 11</option>
+            <option>Class 12</option>
+            <option>Dropper (12th Pass)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Course Interested In *</label>
+          <select id="course">
+            <option value="">Select course</option>
+            <option>IIT-JEE (Mains + Advanced)</option>
+            <option>NEET</option>
+            <option>BITSAT</option>
+            <option>Both JEE & NEET</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>School / College Name</label>
+        <input type="text" id="school" placeholder="Current school or college">
+      </div>
+      <div class="form-group">
+        <label>Message / Query</label>
+        <textarea id="message" placeholder="Any specific questions or requirements..."></textarea>
+      </div>
+      <button class="form-submit" onclick="submitForm()">🚀 Submit Enquiry</button>
+      <div class="form-success" id="formSuccess">
+        ✅ Thank you! Your enquiry has been received. We will contact you within 24 hours.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2025 <strong>Navodaya Alumni's Cognition Academy</strong>, Wardha &nbsp;|&nbsp; IIT-JEE | NEET &nbsp;|&nbsp; <strong>Your Belief! Our Responsibility!</strong></p>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<div class="whatsapp-float">
+  <span class="whatsapp-tooltip">Chat on WhatsApp</span>
+  <a class="whatsapp-btn" href="https://wa.me/917387350221" target="_blank" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+</div>
+
+<script>
+// Helper to resolve API URLs (handles Live Server and file protocol)
+function getApiUrl(endpoint) {
+  if (window.location.protocol === 'file:') {
+    return `http://localhost:3000${endpoint}`;
+  }
+  if (window.location.port && window.location.port !== '3000') {
+    return `${window.location.protocol}//${window.location.hostname}:3000${endpoint}`;
+  }
+  return endpoint;
+}
+
+const revealEls = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+revealEls.forEach(el => observer.observe(el));
+
+async function submitForm() {
+  const studentName = document.getElementById('studentName').value.trim();
+  const parentName = document.getElementById('parentName').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  const whatsapp = document.getElementById('whatsapp').value.trim();
+  const currentClass = document.getElementById('currentClass').value;
+  const course = document.getElementById('course').value;
+  const school = document.getElementById('school').value.trim();
+  const message = document.getElementById('message').value.trim();
+
+  if (!studentName || !phone || !course) {
+    alert('Please fill all required fields (*)');
+    return;
+  }
+
+  const submitBtn = document.querySelector('.form-submit');
+  if (submitBtn) {
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting...';
+  }
+
+  try {
+    const response = await fetch(getApiUrl('/api/enquiry'), {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        studentName,
+        parentName,
+        phone,
+        whatsapp,
+        currentClass,
+        course,
+        school,
+        message
+      })
+    });
+
+    if (!response.ok) {
+      const data = await response.json();
+      alert(data.error || 'Failed to submit enquiry. Please try again.');
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = '🚀 Submit Enquiry';
+      }
+      return;
+    }
+
+    document.getElementById('formSuccess').style.display = 'block';
+
+    const msg = `*New Enquiry - Cognition Academy*\n\nStudent: ${studentName}\nPhone: ${phone}\nCourse: ${course}\nClass: ${currentClass}\nSchool: ${school}\nMessage: ${message}`;
+    setTimeout(() => {
+      window.location.href = `https://wa.me/917387350221?text=${encodeURIComponent(msg)}`;
+    }, 1000);
+
+  } catch (err) {
+    console.error(err);
+    const msg = `*New Enquiry - Cognition Academy*\n\nStudent: ${studentName}\nPhone: ${phone}\nCourse: ${course}\nClass: ${currentClass}\nSchool: ${school}\nMessage: ${message}`;
+    window.location.href = `https://wa.me/917387350221?text=${encodeURIComponent(msg)}`;
+  }
+}
+function toggleMenu() {
+  const drawer = document.getElementById("mobileDrawer");
+  const overlay = document.getElementById("mobileOverlay");
+  const ham = document.getElementById("hamburger");
+  drawer.classList.toggle("open");
+  overlay.classList.toggle("open");
+  ham.classList.toggle("open");
+}
+</script>
+<!-- CALL FLOAT -->
+<div class="call-float">
+  <span class="call-tooltip">Call Us Now</span>
+  <a class="call-btn" href="javascript:void(0)" onclick="openCallPopup()" aria-label="Call">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+  </a>
+</div>
+<!-- CALL POPUP -->
+<div class="call-popup-overlay" id="callOverlay" onclick="closeCallPopup()"></div>
+<div class="call-popup" id="callPopup">
+  <div class="call-popup-header">
+    <div class="cp-icon">📞</div>
+    <div>
+      <div class="cp-title">Talk to a Counsellor</div>
+      <div class="cp-sub">Have doubts? We are happy to help!</div>
+    </div>
+    <button class="call-popup-close" onclick="closeCallPopup()">×</button>
+  </div>
+  <div class="call-popup-body">
+    <div class="cp-label">Call Us Now</div>
+    <div class="call-popup-numbers">
+      <a href="tel:+917387350221">
+        <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        7387350221
+      </a>
+    </div>
+    <a class="call-popup-wa" href="https://wa.me/917387350221" target="_blank">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Chat on WhatsApp
+    </a>
+  </div>
+</div>
+<script>
+function openCallPopup() {
+  document.getElementById("callPopup").classList.add("open");
+  document.getElementById("callOverlay").classList.add("open");
+}
+function closeCallPopup() {
+  document.getElementById("callPopup").classList.remove("open");
+  document.getElementById("callOverlay").classList.remove("open");
+}
+</script>
+</body>
+</html>

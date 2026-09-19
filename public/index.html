@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cognition Academy | IIT-JEE & NEET | Wardha</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Raleway:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <!-- Hamburger Button -->
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <a class="nav-brand" href="index.html">
+    <div class="nav-logo-circle">
+      <img src="logo.jpeg" alt="Cognition Academy Logo" style="width:38px; height:38px; border-radius:50%; object-fit:cover;">
+    </div>
+    <div class="nav-brand-text">
+      <div class="nav-brand-sub">Navodaya Alumni's</div>
+      <div class="nav-brand-name">Cognition Academy</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="courses.html">All Courses</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="results.html">Results</a></li>
+    <li><a href="faculty.html">Faculty</a></li>
+    <li><a href="features.html">Features</a></li>
+    <li><a href="curriculum.html">Curriculum</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="testimonials.html">Testimonials</a></li>
+    <li><a href="videos.html" class="nav-videos">▶ Videos</a></li>
+    <li><a href="tests.html">Test Series</a></li>
+    <li><a href="enquiry.html" class="nav-enquiry">Enquiry</a></li>
+    <li><a href="login.html" class="nav-login-btn">Login</a></li>
+  </ul>
+</nav>
+
+<!-- Mobile Nav Overlay -->
+<div class="mobile-nav-overlay" id="mobileOverlay" onclick="toggleMenu()"></div>
+
+<!-- Mobile Nav Drawer -->
+<div class="mobile-nav-drawer" id="mobileDrawer">
+  <div class="mobile-nav-header">
+    <img src="logo.jpeg" alt="Logo">
+    <div class="brand-text">
+      <div class="brand-sub">Navodaya Alumni's</div>
+      <div class="brand-name">Cognition Academy</div>
+    </div>
+  </div>
+  <ul class="mobile-nav-links">
+    <li><a href="index.html">🏠 Home</a></li>
+    <li><a href="courses.html">📖 All Courses</a></li>
+    <li><a href="about.html">ℹ️ About</a></li>
+    <li><a href="results.html">🏆 Results</a></li>
+    <li><a href="faculty.html">👨‍🏫 Faculty</a></li>
+    <li><a href="features.html">⭐ Features</a></li>
+    <li><a href="curriculum.html">📚 Curriculum</a></li>
+    <li><a href="gallery.html">🖼️ Gallery</a></li>
+    <li><a href="testimonials.html">💬 Testimonials</a></li>
+    <li class="mobile-videos-link"><a href="videos.html">▶️ Free Videos</a></li>
+    <li><a href="tests.html">📝 Test Series</a></li>
+    <li><a href="enquiry.html">📋 Enquiry</a></li>
+    <li class="mobile-login-link"><a href="login.html">🔐 Login / Sign Up</a></li>
+  </ul>
+  <div class="mobile-nav-footer">
+    <p>📍 Karale Building, Kelkarwadi, Wardha</p>
+    <a href="tel:9834683450">📞 9834683450 | 7387350221</a>
+  </div>
+</div>
+
+<!-- HERO SLIDER (PW Style) -->
+<div class="hero-slider" id="heroSlider">
+  <div class="slider-track" id="sliderTrack">
+
+    <!-- SLIDE 1: Welcome / Main -->
+    <div class="slide slide-1">
+      <div class="slide-content">
+        <span class="slide-tag">IIT-JEE &nbsp;|&nbsp; NEET &nbsp;|&nbsp; Wardha</span>
+        <p style="font-size:13px;color:var(--sky);font-weight:600;letter-spacing:3px;text-transform:uppercase;margin-bottom:10px;">Navodaya Alumni's</p>
+        <div class="slide-title"><span>Cognition</span> Academy</div>
+        <div class="slide-subtitle">YOUR BELIEF ! OUR RESPONSIBILITY !</div>
+        <p class="slide-sub">Quality education in a competitive, healthy environment — preparing students for IIT-JEE, BITSAT, AIIMS, NEET and all major competitive examinations.</p>
+        <div class="slide-btns">
+          <a href="results.html" class="slide-btn-primary">🏆 See Our Results</a>
+          <a href="enquiry.html" class="slide-btn-outline">Enquire Now</a>
+        </div>
+      </div>
+      <div class="slide-visual">
+        <div class="slide-logo-big">
+          <img src="logo.jpeg" alt="Cognition Academy">
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 2: Cognition Intro Video -->
+    <div class="slide slide-photo" style="background:#000;">
+      <video class="slide-full-img" muted playsinline style="width:100%;height:100%;object-fit:cover;">
+        <source src="videos/Cognition Intro music replace.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <!-- SLIDE 3: Free Videos -->
+    <div class="slide slide-2">
+      <div class="slide-content">
+        <span class="slide-tag orange">🆓 Free Learning</span>
+        <div class="slide-title">Free Video<br><span>Lectures</span> on YouTube</div>
+        <div class="slide-subtitle">Physics • Chemistry • Maths • Biology</div>
+        <ul class="slide-checklist">
+          <li>Live & recorded lectures by expert faculty</li>
+          <li>IIT-JEE & NEET full syllabus coverage</li>
+          <li>Concept building + problem solving</li>
+          <li>New videos uploaded every week</li>
+        </ul>
+        <div class="slide-btns">
+          <a href="videos.html" class="slide-btn-primary">▶ Watch Free Lectures</a>
+          <a href="https://youtube.com/@cognitionacademy4625" target="_blank" class="slide-btn-outline">Subscribe YouTube</a>
+        </div>
+      </div>
+      <div class="slide-visual">
+        <div class="slide-icon-big">📺</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 3: Test Series -->
+    <div class="slide slide-3">
+      <div class="slide-content">
+        <span class="slide-tag green">📝 Test Series</span>
+        <div class="slide-title">JEE &amp; NEET<br><span>Mock Tests</span></div>
+        <div class="slide-subtitle">Topic-wise • Chapter-wise • Full Length</div>
+        <ul class="slide-checklist">
+          <li>JEE Mains &amp; Advanced pattern tests</li>
+          <li>NEET full-length mock exams</li>
+          <li>Instant results &amp; detailed analysis</li>
+          <li>Free tests — no login required!</li>
+        </ul>
+        <div class="slide-btns">
+          <a href="tests.html" class="slide-btn-primary" style="background:#43a047;">📋 Start Free Test</a>
+          <a href="signup.html" class="slide-btn-outline">Create Account</a>
+        </div>
+      </div>
+      <div class="slide-visual">
+        <div class="slide-icon-big">📝</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 4: Admissions -->
+    <div class="slide slide-4">
+      <div class="slide-content">
+        <span class="slide-tag red">🎓 Admissions Open 2025–26</span>
+        <div class="slide-title">Join <span>Cognition</span><br>Academy Today</div>
+        <div class="slide-subtitle">Navodaya Alumni's — 6+ Years of Excellence</div>
+        <ul class="slide-checklist">
+          <li>IIT Bombay • IIT Kanpur • IIT Kharagpur</li>
+          <li>AIIMS Hyderabad • VNIT Nagpur • NITs</li>
+          <li>500+ students trained successfully</li>
+          <li>Personal attention &amp; doubt sessions</li>
+        </ul>
+        <div class="slide-btns">
+          <a href="enquiry.html" class="slide-btn-primary" style="background:#e53935;">📋 Enquire Now</a>
+          <a href="contact.html" class="slide-btn-outline">Contact Us</a>
+        </div>
+      </div>
+      <div class="slide-visual">
+        <div class="slide-icon-big">🏆</div>
+      </div>
+    </div>
+
+  </div><!-- /slider-track -->
+
+  <!-- Arrows -->
+  <button class="slider-arrow prev" onclick="slideMove(-1)">&#8249;</button>
+  <button class="slider-arrow next" onclick="slideMove(1)">&#8250;</button>
+
+  <!-- Dots -->
+  <div class="slider-dots" id="sliderDots"></div>
+</div>
+
+<!-- STATS STRIP -->
+<div class="stats-strip">
+  <div class="stat"><div><span class="num" data-target="500">0</span><span class="num-plus">+</span></div><span class="lbl">Students Trained</span></div>
+  <div class="stat"><div><span class="num" data-target="6">0</span><span class="num-plus">+</span></div><span class="lbl">Years of Excellence</span></div>
+  <div class="stat"><span class="num static">IITs</span><span class="lbl">Top Selections</span></div>
+  <div class="stat"><span class="num static">AIIMS</span><span class="lbl">NEET Toppers</span></div>
+  <div class="stat"><span class="num static">NITs</span><span class="lbl">JEE Achievers</span></div>
+</div>
+
+<!-- COURSES -->
+<section style="background:#f7f9fc; padding:60px 6%;">
+  <div style="text-align:center; margin-bottom:40px;">
+    <div class="section-label">What We Offer</div>
+    <h2 class="section-title">Our Courses</h2>
+    <div class="section-divider"></div>
+    <p style="color:#666; font-size:15px; max-width:520px; margin:0 auto;">Comprehensive preparation for IIT-JEE & NEET — Class 11, 12 and Droppers</p>
+  </div>
+  <div style="display:grid; grid-template-columns:repeat(2, 1fr); gap:18px; max-width:1200px; margin:0 auto 36px;">
+
+    <a href="courses.html" style="background:#fff; border-radius:14px; padding:24px 22px; box-shadow:0 2px 16px rgba(10,30,61,0.07); border:1.5px solid #e4edf8; border-top:3px solid #ff7043; display:flex; justify-content:space-between; align-items:center; text-decoration:none; transition:transform .2s, box-shadow .2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 28px rgba(10,30,61,0.13)'" onmouseout="this.style.transform='';this.style.boxShadow='0 2px 16px rgba(10,30,61,0.07)'" style="min-height:140px;">
+      <div>
+        <div style="font-size:11px;font-weight:800;color:#ff7043;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">NEET</div>
+        <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:800;color:#0a1e3d;margin-bottom:10px;">NEET Preparation</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <span style="border:1.5px solid #d0dff0;border-radius:20px;padding:3px 12px;font-size:12px;font-weight:600;color:#0a1e3d;">Class 11</span>
+          <span style="border:1.5px solid #d0dff0;border-radius:20px;padding:3px 12px;font-size:12px;font-weight:600;color:#0a1e3d;">Class 12</span>
+          
+        </div>
+      </div>
+      <div style="font-size:48px;">🧬</div>
+    </a>
+
+    <a href="courses.html" style="background:#fff; border-radius:14px; padding:24px 22px; box-shadow:0 2px 16px rgba(10,30,61,0.07); border:1.5px solid #e4edf8; border-top:3px solid #ffa000; display:flex; justify-content:space-between; align-items:center; text-decoration:none; transition:transform .2s, box-shadow .2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 28px rgba(10,30,61,0.13)'" onmouseout="this.style.transform='';this.style.boxShadow='0 2px 16px rgba(10,30,61,0.07)'" style="min-height:140px;">
+      <div>
+        <div style="font-size:11px;font-weight:800;color:#ffa000;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">IIT-JEE</div>
+        <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:800;color:#0a1e3d;margin-bottom:10px;">JEE Mains & Advanced</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <span style="border:1.5px solid #d0dff0;border-radius:20px;padding:3px 12px;font-size:12px;font-weight:600;color:#0a1e3d;">Class 11</span>
+          <span style="border:1.5px solid #d0dff0;border-radius:20px;padding:3px 12px;font-size:12px;font-weight:600;color:#0a1e3d;">Class 12</span>
+          
+        </div>
+      </div>
+      <div style="font-size:48px;">⚛️</div>
+    </a>
+
+    <a href="tests.html" style="background:#fff; border-radius:14px; padding:24px 22px; box-shadow:0 2px 16px rgba(10,30,61,0.07); border:1.5px solid #e4edf8; border-top:3px solid #43a047; display:flex; justify-content:space-between; align-items:center; text-decoration:none; transition:transform .2s, box-shadow .2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 28px rgba(10,30,61,0.13)'" onmouseout="this.style.transform='';this.style.boxShadow='0 2px 16px rgba(10,30,61,0.07)'" style="min-height:140px;">
+      <div>
+        <div style="font-size:11px;font-weight:800;color:#43a047;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">Test Series</div>
+        <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:800;color:#0a1e3d;margin-bottom:10px;">Mock Tests</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <span style="border:1.5px solid #d0dff0;border-radius:20px;padding:3px 12px;font-size:12px;font-weight:600;color:#0a1e3d;">Topic-wise</span>
+          <span style="border:1.5px solid #d0dff0;border-radius:20px;padding:3px 12px;font-size:12px;font-weight:600;color:#0a1e3d;">Full Length</span>
+        </div>
+      </div>
+      <div style="font-size:48px;">📝</div>
+    </a>
+
+    <a href="courses.html" style="background:#fff; border-radius:14px; padding:24px 22px; box-shadow:0 2px 16px rgba(10,30,61,0.07); border:1.5px solid #e4edf8; border-top:3px solid #43a047; display:flex; justify-content:space-between; align-items:center; text-decoration:none; transition:transform .2s, box-shadow .2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 28px rgba(10,30,61,0.13)'" onmouseout="this.style.transform='';this.style.boxShadow='0 2px 16px rgba(10,30,61,0.07)'" style="min-height:140px;">
+      <div>
+        <div style="font-size:11px;font-weight:800;color:#43a047;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">MHT-CET</div>
+        <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:800;color:#0a1e3d;margin-bottom:10px;">MHT-CET Preparation</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <span style="border:1.5px solid #d0dff0;border-radius:20px;padding:3px 12px;font-size:12px;font-weight:600;color:#0a1e3d;">Class 11</span>
+          <span style="border:1.5px solid #d0dff0;border-radius:20px;padding:3px 12px;font-size:12px;font-weight:600;color:#0a1e3d;">Class 12</span>
+          
+        </div>
+      </div>
+      <div style="font-size:48px;">📋</div>
+    </a>
+
+  </div>
+  <div style="text-align:center;">
+    <a href="courses.html" style="display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:#fff;padding:13px 32px;border-radius:8px;font-weight:800;font-size:15px;text-decoration:none;transition:transform .2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform=''">View All Courses →</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about reveal" id="about">
+  <div class="section-label">Who We Are</div>
+  <h2 class="section-title">About Cognition Academy</h2>
+  <div class="section-divider"></div>
+  <div class="about-grid">
+    <div class="about-text">
+      <p><strong>Dear Parents,</strong></p>
+      <p>We at Cognition Academy are committed to provide quality education in a highly competitive, congenial and healthy environment along with the best infrastructure. We infuse exemplary skills that are demanded from the students to be successful in IIT-JEE, BITSAT, AIIMS, NEET and other major competitive examinations.</p>
+      <p>Here at Cognition Academy, we truly understand that the final outcome is always in the hands of student; but, we also believe that it is the teacher who can truly direct the student to achieve the desired goal. I take personal interest in what's going on in my classes, to confirm that we as an organisation achieve the desired outcome.</p>
+      <p>I always believe that each one of us can shine in whatever we undertake. Our faculty is there to mould your desire, dedication and determination to the path of success.</p>
+      <p>I, on behalf of entire Cognition Academy team welcome you to join us and feel the blend of quality & Innovation that can change you to be the world class professional.</p>
+      <p class="director">— Mr. Kunal Dolas, Director, Cognition Academy, Wardha</p>
+      <br>
+      <p><strong>About Us:</strong> COGNITION Institute is for the aspirants of IIT-JEE/NEET competitive exams. COGNITION is empowered with a team of dedicated and expert faculties hail from NAVODAYA focussed on preparing the students for most challenging and rigorous competitive exams and also to pioneer them to achieve success in these examinations. We believe in providing an additional edge to all our IIT-JEE/NEET aspirants by framing a strong foundation for their preparation.</p>
+    </div>
+    <div class="about-cards">
+      <div class="info-card">
+        <h4>Our Vision &amp; Mission</h4>
+        <ul>
+          <li>Providing all deserving students in Vidarbha with the best curriculum and pedagogy along with the highest quality of education in nurturing the students for board and entrance examination.</li>
+          <li>Making learning process rudimentary strong, imaginative and enjoyable using innovative methods of teaching.</li>
+          <li>Strongly believing in implementing students self-learning approach with our proper guidance.</li>
+          <li>Training every aspirant on NAVODAYA's teaching line.</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <h4>Salient Features</h4>
+        <ul>
+          <li>Highly dynamic environment of competitive exams</li>
+          <li>Structural units of syllabus</li>
+          <li>Cumulative tests and model tests</li>
+          <li>Chapter/topic wise preparation with past year papers</li>
+          <li>Special revision classes especially for weak aspirants</li>
+          <li>Clarity of concepts instead of mere dictation</li>
+          <li>Time to time career counseling and guidance</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section class="results reveal" id="results">
+  <div class="section-label">Our Pride</div>
+  <h2 class="section-title">Results — NEET &amp; JEE</h2>
+  <div class="section-divider"></div>
+
+  <div class="results-year">
+    <div class="year-badge"><span>Results</span> NEET &amp; JEE 2025</div>
+    <div class="toppers-grid">
+      <div class="topper-card"><img class="topper-photo" src="photos/mugdha.png" alt="Mugdha Darwhankar"></div>
+      <div class="topper-card"><img class="topper-photo" src="photos/kedar.png" alt="Kedar Somalwar"></div>
+      <div class="topper-card"><img class="topper-photo" src="photos/saumya.png" alt="Saumya Kherdekar"></div>
+      <div class="topper-card"><img class="topper-photo" src="photos/himanshu.png" alt="Himanshu Meshram"></div>
+    </div>
+  </div>
+
+  <div class="results-year">
+    <div class="year-badge"><span>Results</span> NEET &amp; JEE 2024</div>
+    <div class="toppers-grid">
+      <div class="topper-card"><img class="topper-photo" src="photos/sanjyoti.png" alt="Sanjyoti Maheshgauri"></div>
+      <div class="topper-card"><img class="topper-photo" src="photos/swarmin.png" alt="Swarnim Jaiswal"></div>
+      <div class="topper-card"><img class="topper-photo" src="photos/roshan.png" alt="Roshan Chaudhari"></div>
+      <div class="topper-card"><img class="topper-photo" src="photos/anushka.png" alt="Anushka Jambulkar"></div>
+    </div>
+  </div>
+
+  <div class="results-year">
+    <div class="year-badge"><span>Results</span> NEET &amp; JEE 2023</div>
+    <div class="toppers-grid">
+      <div class="topper-card"><img class="topper-photo" src="photos/prajwal.png" alt="Prajwal Punwatkar"></div>
+      <div class="topper-card"><img class="topper-photo" src="photos/shashank.png" alt="Shashank Yengade"></div>
+      <div class="topper-card"><img class="topper-photo" src="photos/vaishnavi.png" alt="Vaishnavi Dadmal"></div>
+    </div>
+  </div>
+
+  <div class="results-year">
+    <div class="year-badge"><span>Results</span> NEET &amp; JEE 2022</div>
+    <div class="toppers-grid">
+      <div class="topper-card"><img class="topper-photo" src="photos/aryal.png" alt="Aryal Katkar"></div>
+      <div class="topper-card"><img class="topper-photo" src="photos/sarthak.png" alt="Sarthak Patil"></div>
+      <div class="topper-card"><img class="topper-photo" src="photos/harsh.png" alt="Harsh Patle"></div>
+      <div class="topper-card"><img class="topper-photo" src="photos/akash.png" alt="Akash Wani"></div>
+      <div class="topper-card"><img class="topper-photo" src="photos/kunal.png" alt="Kunal Ambule"></div>
+      <div class="topper-card"><img class="topper-photo" src="photos/pratiksha.png" alt="Pratiksha Jagtap"></div>
+      <div class="topper-card"><img class="topper-photo" src="photos/furkan.png" alt="Furkan Doshi"></div>
+      <div class="topper-card"><img class="topper-photo" src="photos/nayan.png" alt="Nayan Chandankhede"></div>
+    </div>
+  </div>
+
+  <div class="results-year">
+    <div class="year-badge"><span>Toppers</span> From 2020</div>
+    <div class="toppers-grid">
+      <div class="topper-card"><img class="topper-photo" src="photos/bhushan.png" alt="Bhushan Hatwar"></div>
+      <div class="topper-card"><img class="topper-photo" src="photos/priya.png" alt="Priya Mughal"></div>
+    </div>
+  </div>
+</section>
+
+<!-- FACULTY -->
+<section class="faculty reveal" id="faculty">
+  <div class="section-label">Expert Team</div>
+  <h2 class="section-title">Our Faculty</h2>
+  <div class="section-divider"></div>
+  <div class="faculty-grid">
+    <div class="faculty-card">
+      <img class="faculty-photo" src="photos/teacher 2.jpeg" alt="Kunal Sir">
+      <div class="faculty-info">
+        <h4>Kunal Sir <small style="font-size:11px;color:var(--gray)">(M.Sc., RTMNU)</small></h4>
+        <div class="dept">Biology</div>
+        <p>He is known for his dedication towards teaching. His simplicity combined with devotion and commitment makes students feel at ease in his class. Thanks to his enormous patience, he is able to work with even the weakest of the students at one to one level and clear their concepts.</p>
+      </div>
+    </div>
+    <div class="faculty-card">
+      <img class="faculty-photo" src="photos/teacher 3.jpeg" alt="Rahul Sir">
+      <div class="faculty-info">
+        <h4>Rahul Sir <small style="font-size:11px;color:var(--gray)">(M.Sc., RTMNU)</small></h4>
+        <div class="dept">Mathematics</div>
+        <p>A great motivator and fabulous maths teacher in the Wardha region. He involves the class in exploring his subject on a conceptual level thus enabling all the students to have crisp understanding of the subject. He strongly believes mathematics is the mother of science.</p>
+      </div>
+    </div>
+    <div class="faculty-card">
+      <img class="faculty-photo" src="photos/teacher 4.jpeg" alt="Ankush Sir">
+      <div class="faculty-info">
+        <h4>Ankush Sir <small style="font-size:11px;color:var(--gray)">(VNIT, Nagpur)</small></h4>
+        <div class="dept">Physics</div>
+        <p>He has well established name in IIT-JEE coaching. Over the years of teaching experience, he has come with innovative methods of explanation by which his students feel the subject easier and excel in it. According to him physics can be best understood by relating it with daily life observations.</p>
+      </div>
+    </div>
+    <div class="faculty-card">
+      <img class="faculty-photo" src="photos/teacher 5.jpeg" alt="Pranay Sir">
+      <div class="faculty-info">
+        <h4>Pranay Sir <small style="font-size:11px;color:var(--gray)">(Ex-Super 30)</small></h4>
+        <div class="dept">Chemistry</div>
+        <p>His teaching methodology is concept oriented and based upon intellect rather than memorization that has been crucial for success in final examination of various competitive examinations. "CHEMISTRY IS ALL ABOUT CONCEPTS AND EXCEPTIONS FOR IT."</p>
+      </div>
+    </div>
+    <div class="faculty-card">
+      <img class="faculty-photo" src="photos/teacher 6.jpeg" alt="Akshay Sir">
+      <div class="faculty-info">
+        <h4>Akshay Sir <small style="font-size:11px;color:var(--gray)">(YCCE, Nagpur)</small></h4>
+        <div class="dept">Chemistry</div>
+        <p>He is extremely passionate and energetic teacher. His devotion for the subject made him one of the most popular faculty of Nagpur region. His unique and easier approach towards JEE chemistry uplifts students to the level he/she not merely accumulates knowledge but possible dimensions in life.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features reveal" id="features">
+  <div class="section-label">Why Choose Us</div>
+  <h2 class="section-title">Teaching &amp; Testing Methodology</h2>
+  <div class="section-divider"></div>
+  <div class="features-grid">
+    <div class="feature-box">
+      <div class="feature-icon">📚</div>
+      <h4>Teaching Methodology</h4>
+      <ul>
+        <li>Regular classroom teaching by highly talented and dedicated faculties</li>
+        <li>Concept building through theory and illustrations</li>
+        <li>Daily practice problems</li>
+        <li>Balancing board and IIT-JEE/NEET studies</li>
+        <li>Regular doubt clearing sessions</li>
+        <li>Comprehensive study material as per board and entrance exams</li>
+      </ul>
+    </div>
+    <div class="feature-box">
+      <div class="feature-icon">📝</div>
+      <h4>Testing Methodology</h4>
+      <ul>
+        <li>Topic wise weakly tests conducted every week in all subjects</li>
+        <li>Monthly board test and cumulative JEE/NEET tests</li>
+        <li>Counseling sessions</li>
+        <li>Motivational awards</li>
+        <li>Full length tests as per JEE/NEET pattern (Weekly & Monthly)</li>
+      </ul>
+    </div>
+    <div class="feature-box">
+      <div class="feature-icon">🎯</div>
+      <h4>Salient Features</h4>
+      <ul>
+        <li>Highly dynamic environment of competitive exams</li>
+        <li>Structural units of syllabus</li>
+        <li>Cumulative tests and model tests</li>
+        <li>Chapter/topic wise preparation with past year papers</li>
+        <li>Special revision classes especially for weak aspirants</li>
+        <li>Clarity of concepts instead of mere dictation</li>
+        <li>Time to time career counseling and guidance</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CURRICULUM -->
+<section class="curriculum reveal" id="curriculum">
+  <div class="section-label">Syllabus Structure</div>
+  <h2 class="section-title">Curriculum</h2>
+  <div class="section-divider"></div>
+  <div class="curriculum-tabs">
+    <button class="tab-btn active" onclick="showTab('math', this)">Mathematics</button>
+    <button class="tab-btn" onclick="showTab('bio', this)">Biology</button>
+    <button class="tab-btn" onclick="showTab('phy', this)">Physics</button>
+    <button class="tab-btn" onclick="showTab('chem', this)">Chemistry</button>
+  </div>
+
+  <div class="tab-content active" id="math">
+    <p style="font-size:13px;color:var(--gray);margin-bottom:20px;">Foundation Course — Duration: 40 Days</p>
+    <div class="subject-block">
+      <div class="sub-label">Aspire Course</div>
+      <table class="curr-table"><thead><tr><th>Topic</th><th>Duration</th><th>JEE Weightage</th></tr></thead>
+        <tbody>
+          <tr><td>Algebra-I (Quadratic Equation, Sequence & Series, P&C, Binomial Theorem, Probability)</td><td>80 days</td><td>24 marks</td></tr>
+          <tr><td>Algebra-II (Statistics, Mathematical Reasoning, Complex Number, Matrices, Determinants)</td><td>50 days</td><td>20 marks</td></tr>
+        </tbody>
+      </table>
+      <div class="sub-label">Achiever Course</div>
+      <table class="curr-table"><thead><tr><th>Topic</th><th>Duration</th><th>JEE Weightage</th></tr></thead>
+        <tbody>
+          <tr><td>Trigonometry-I</td><td>45 days</td><td>4 marks</td></tr>
+          <tr><td>Calculus-I (Functions, Limits, Continuity and differentiability, Differentiation, AOD)</td><td>80 days</td><td>16-20 marks</td></tr>
+          <tr><td>Calculus-II (Integration, Area Under Curve, Differential Equations)</td><td>80 days</td><td>16 marks</td></tr>
+        </tbody>
+      </table>
+      <div class="sub-label">Target Course</div>
+      <table class="curr-table"><thead><tr><th>Topic</th><th>Duration</th><th>JEE Weightage</th></tr></thead>
+        <tbody>
+          <tr><td>Coordinate Geometry</td><td>90 days</td><td>28 marks</td></tr>
+          <tr><td>Vector and 3D</td><td>40 days</td><td>8 marks</td></tr>
+          <tr><td>Trigonometry-II</td><td>45 days</td><td>4 marks</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="tab-content" id="bio">
+    <p style="font-size:13px;color:var(--gray);margin-bottom:20px;">Foundation Course — Duration: 40 Days</p>
+    <div class="subject-block">
+      <div class="sub-label">Aspire Course</div>
+      <table class="curr-table"><thead><tr><th>Topic</th><th>Duration</th><th>NEET Weightage</th></tr></thead>
+        <tbody>
+          <tr><td>Cell structure and functions</td><td>10 days</td><td>8-12 marks</td></tr>
+          <tr><td>Structural organism in plants and animals</td><td>40 days</td><td>32 marks</td></tr>
+          <tr><td>Diversity in living organism</td><td>30 days</td><td>16 marks</td></tr>
+          <tr><td>Plant Physiology</td><td>60 days</td><td>32 marks</td></tr>
+        </tbody>
+      </table>
+      <div class="sub-label">Achiever Course</div>
+      <table class="curr-table"><thead><tr><th>Topic</th><th>Duration</th><th>NEET Weightage</th></tr></thead>
+        <tbody>
+          <tr><td>Human Physiology</td><td>80 days</td><td>52 marks</td></tr>
+          <tr><td>Reproduction</td><td>50 days</td><td>40 marks</td></tr>
+          <tr><td>Genetics and Evolution</td><td>50 days</td><td>72 marks</td></tr>
+        </tbody>
+      </table>
+      <div class="sub-label">Target Course</div>
+      <table class="curr-table"><thead><tr><th>Topic</th><th>Duration</th><th>NEET Weightage</th></tr></thead>
+        <tbody>
+          <tr><td>Biology and Human health welfare</td><td>50 days</td><td>16 marks</td></tr>
+          <tr><td>Biotechnology and its applications</td><td>10 days</td><td>4-8 marks</td></tr>
+          <tr><td>Ecology and Environment</td><td>50 days</td><td>40 marks</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:14px;font-size:13px;color:var(--gray);">Crash Course: 40 Days &nbsp;|&nbsp; Board Revision: 30 Days</p>
+    </div>
+  </div>
+
+  <div class="tab-content" id="phy">
+    <p style="font-size:13px;color:var(--gray);margin-bottom:20px;">Foundation Course — Duration: 40 Days</p>
+    <div class="subject-block">
+      <div class="sub-label">Aspire Course</div>
+      <table class="curr-table"><thead><tr><th>Topic</th><th>Duration</th><th>JEE Weightage</th><th>NEET Weightage</th></tr></thead>
+        <tbody>
+          <tr><td>Vector, Unit And Dimension</td><td>30 days</td><td>4 marks</td><td>4 marks</td></tr>
+          <tr><td>Kinematics</td><td>40 days</td><td>4 marks</td><td>4 marks</td></tr>
+          <tr><td>NLM, Friction</td><td>35 days</td><td>4 marks</td><td>8-12 marks</td></tr>
+          <tr><td>WPE, Circular Motion</td><td>30 days</td><td>4-8 marks</td><td>12 marks</td></tr>
+          <tr><td>COM, Rotation, Oscillations</td><td>60 days</td><td>12-16 marks</td><td>12 marks</td></tr>
+          <tr><td>Fluid Mechanics, Elasticity</td><td>25 days</td><td>8 marks</td><td>12 marks</td></tr>
+        </tbody>
+      </table>
+      <div class="sub-label">Achiever Course</div>
+      <table class="curr-table"><thead><tr><th>Topic</th><th>Duration</th><th>JEE Weightage</th><th>NEET Weightage</th></tr></thead>
+        <tbody>
+          <tr><td>Heat</td><td>35 days</td><td>4-12 marks</td><td>16 marks</td></tr>
+          <tr><td>Electrostatics, Capacitor</td><td>40 days</td><td>8-12 marks</td><td>12 marks</td></tr>
+          <tr><td>Current Electricity</td><td>15 days</td><td>4-12 marks</td><td>12 marks</td></tr>
+          <tr><td>Magnetism, EMI</td><td>40 days</td><td>8-12 marks</td><td>16 marks</td></tr>
+          <tr><td>AC, EMW</td><td>15 days</td><td>4-8 marks</td><td>8 marks</td></tr>
+        </tbody>
+      </table>
+      <div class="sub-label">Target Course</div>
+      <table class="curr-table"><thead><tr><th>Topic</th><th>Duration</th><th>JEE Weightage</th><th>NEET Weightage</th></tr></thead>
+        <tbody>
+          <tr><td>Waves</td><td>30 days</td><td>4-8 marks</td><td>8 marks</td></tr>
+          <tr><td>Ray Optics, Waves Optics</td><td>50 days</td><td>8-12 marks</td><td>20 marks</td></tr>
+          <tr><td>Modern Physics</td><td>40 days</td><td>12-16 marks</td><td>24-28 marks</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:14px;font-size:13px;color:var(--gray);">Crash Course: 40 Days &nbsp;|&nbsp; Board Revision: 30 Days</p>
+    </div>
+  </div>
+
+  <div class="tab-content" id="chem">
+    <p style="font-size:13px;color:var(--gray);margin-bottom:20px;">Foundation Course — Duration: 40 Days</p>
+    <div class="subject-block">
+      <div class="sub-label">Aspire Course</div>
+      <table class="curr-table"><thead><tr><th>Topic</th><th>Duration</th><th>JEE Weightage</th><th>NEET Weightage</th></tr></thead>
+        <tbody>
+          <tr><td>Mole Concept</td><td>30 days</td><td>4 marks</td><td>8 marks</td></tr>
+          <tr><td>Atomic structure</td><td>20 days</td><td>8 marks</td><td>4 marks</td></tr>
+          <tr><td>Periodic Table, Chemical Bonding</td><td>40 days</td><td>12-16 marks</td><td>24 marks</td></tr>
+          <tr><td>Redox Reaction</td><td>15 days</td><td>4 marks</td><td>4 marks</td></tr>
+          <tr><td>IUPAC Nomenclature, Isomerism</td><td>32 days</td><td>4-8 marks</td><td>8 marks</td></tr>
+          <tr><td>Gaseous state, Thermodynamics, Thermo chemistry</td><td>65 days</td><td>8 marks</td><td>8 marks</td></tr>
+          <tr><td>Hydrogen</td><td>10 days</td><td>4 marks</td><td>4 marks</td></tr>
+        </tbody>
+      </table>
+      <div class="sub-label">Achiever Course</div>
+      <table class="curr-table"><thead><tr><th>Topic</th><th>Duration</th><th>JEE Weightage</th><th>NEET Weightage</th></tr></thead>
+        <tbody>
+          <tr><td>GOC, Reaction Mechanism</td><td>50 days</td><td>4-8 marks</td><td>8 marks</td></tr>
+          <tr><td>Chemical Equilibrium, Ionic Equilibrium</td><td>25 days</td><td>8 marks</td><td>12 marks</td></tr>
+          <tr><td>Solutions</td><td>15 days</td><td>4 marks</td><td>8 marks</td></tr>
+          <tr><td>S-Block</td><td>15 days</td><td>4 marks</td><td>4 marks</td></tr>
+          <tr><td>Hydrocarbon</td><td>20 days</td><td>4 marks</td><td>8 marks</td></tr>
+          <tr><td>Chemical Kinetics, Electrochemistry</td><td>20 days</td><td>8 marks</td><td>12 marks</td></tr>
+          <tr><td>P-Block</td><td>25 days</td><td>4 marks</td><td>12 marks</td></tr>
+        </tbody>
+      </table>
+      <div class="sub-label">Target Course</div>
+      <table class="curr-table"><thead><tr><th>Topic</th><th>Duration</th><th>JEE Weightage</th><th>NEET Weightage</th></tr></thead>
+        <tbody>
+          <tr><td>Alcohol, Phenol & Ethers</td><td>20 days</td><td>4 marks</td><td>8 marks</td></tr>
+          <tr><td>Surface Chemistry, Solid State</td><td>25 days</td><td>8 marks</td><td>8 marks</td></tr>
+          <tr><td>Acid & Ester, Nitrogen Compounds</td><td>30 days</td><td>8 marks</td><td>8 marks</td></tr>
+          <tr><td>d-f Block, Co-ordination Compound</td><td>40 days</td><td>12 marks</td><td>12 marks</td></tr>
+          <tr><td>Salt analysis, Metallurgy</td><td>20 days</td><td>8 marks</td><td>8 marks</td></tr>
+          <tr><td>Bimolecules, Polymer, Environment</td><td>15 days</td><td>12 marks</td><td>12-16 marks</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:14px;font-size:13px;color:var(--gray);">Crash Course: 40 Days &nbsp;|&nbsp; Board Revision: 30 Days</p>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY PREVIEW -->
+<section style="padding: 60px 5%; background: transparent;">
+  <div class="section-label">Our Moments</div>
+  <h2 class="section-title">Gallery</h2>
+  <div class="section-divider"></div>
+  <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(220px,1fr)); gap:14px; margin-top:24px;">
+    <div style="border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(10,30,61,0.10);transition:transform .2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform=''"><img src="photos/Picture2.png" alt="Gallery" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;"></div>
+    <div style="border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(10,30,61,0.10);transition:transform .2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform=''"><img src="photos/Picture3.png" alt="Gallery" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;"></div>
+    <div style="border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(10,30,61,0.10);transition:transform .2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform=''"><img src="photos/Picture4.png" alt="Gallery" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;"></div>
+    <div style="border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(10,30,61,0.10);transition:transform .2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform=''"><img src="photos/Picture5.png" alt="Gallery" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;"></div>
+    <div style="border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(10,30,61,0.10);transition:transform .2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform=''"><img src="photos/Picture6.png" alt="Gallery" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;"></div>
+    <div style="border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(10,30,61,0.10);transition:transform .2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform=''"><img src="photos/Picture7.png" alt="Gallery" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;"></div>
+    <div style="border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(10,30,61,0.10);transition:transform .2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform=''"><img src="photos/Picture8.png" alt="Gallery" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;"></div>
+    <div style="border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(10,30,61,0.10);transition:transform .2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform=''"><img src="photos/Picture9.png" alt="Gallery" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;"></div>
+  </div>
+  <div style="text-align:center;margin-top:28px;">
+    <a href="gallery.html" style="display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:#fff;padding:13px 32px;border-radius:8px;font-weight:800;font-size:15px;text-decoration:none;transition:transform .2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform=''">View Full Gallery →</a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact reveal" id="contact">
+  <div class="section-label" style="color:var(--sky)">Get In Touch</div>
+  <h2 class="section-title">Contact Us</h2>
+  <div class="section-divider"></div>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="contact-item">
+        <div class="contact-icon">📍</div>
+        <div>
+          <h5>Address</h5>
+          <p>Karale Building, Kelkarwadi, Wardha, Maharashtra</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">📞</div>
+        <div>
+          <h5>Phone</h5>
+          <p>7387350221</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">🎓</div>
+        <div>
+          <h5>Courses Offered</h5>
+          <p>IIT-JEE (Mains & Advanced) &nbsp;|&nbsp; NEET &nbsp;|&nbsp; BITSAT &nbsp;|&nbsp; AIIMS</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">🏛️</div>
+        <div>
+          <h5>About</h5>
+          <p>Navodaya Alumni's Cognition Academy — Your Belief! Our Responsibility!</p>
+        </div>
+      </div>
+    </div>
+    <div class="contact-map">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3731.0205937266937!2d78.59844757529352!3d20.749959380830493!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd47fe321121a57%3A0x2feb06a21b5507e7!2sCognition%20Academy%20(%20Navodaya%20Alumn&#39;s)!5e0!3m2!1sen!2sin!4v1778670830448!5m2!1sen!2sin"
+        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2025 <strong>Navodaya Alumni's Cognition Academy</strong>, Wardha &nbsp;|&nbsp; IIT-JEE | NEET &nbsp;|&nbsp; <strong>Your Belief! Our Responsibility!</strong></p>
+</footer>
+
+<script>
+// Tab switching
+function showTab(id, btn) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// Scroll reveal animation
+const revealEls = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); }
+  });
+}, { threshold: 0.1 });
+revealEls.forEach(el => observer.observe(el));
+
+// Counter animation
+function animateCounter(el, target, duration = 1500) {
+  let start = 0;
+  const step = target / (duration / 16);
+  const timer = setInterval(() => {
+    start += step;
+    if (start >= target) { el.textContent = target; clearInterval(timer); }
+    else { el.textContent = Math.floor(start); }
+  }, 16);
+}
+
+const statsObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      document.querySelectorAll('.num[data-target]').forEach(el => {
+        animateCounter(el, parseInt(el.dataset.target));
+      });
+      statsObserver.disconnect();
+    }
+  });
+}, { threshold: 0.5 });
+
+const strip = document.querySelector('.stats-strip');
+if (strip) statsObserver.observe(strip);
+</script>
+<!-- WHATSAPP FLOAT -->
+<div class="whatsapp-float">
+  <span class="whatsapp-tooltip">Chat on WhatsApp</span>
+  <a class="whatsapp-btn" href="https://wa.me/917387350221" target="_blank" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+</div>
+<!-- CALL FLOAT -->
+<div class="call-float">
+  <span class="call-tooltip">Call Us Now</span>
+  <a class="call-btn" href="javascript:void(0)" onclick="openCallPopup()" aria-label="Call">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+  </a>
+</div>
+
+<script>
+// ── SLIDER ──
+let slideIdx = 0;
+const slides = document.querySelectorAll('.slide');
+const track = document.getElementById('sliderTrack');
+const dotsContainer = document.getElementById('sliderDots');
+let autoTimer;
+
+if (slides.length && track) {
+  // Build dots
+  slides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
+    dot.onclick = () => goSlide(i);
+    dotsContainer.appendChild(dot);
+  });
+
+  function goSlide(n) {
+    // Pause any playing video in previous slide
+    const prevVideo = slides[slideIdx] && slides[slideIdx].querySelector('video');
+    if (prevVideo) { prevVideo.pause(); prevVideo.currentTime = 0; }
+
+    slideIdx = (n + slides.length) % slides.length;
+    track.style.transform = 'translateX(-' + slideIdx * 100 + '%)';
+    document.querySelectorAll('.slider-dot').forEach((d, i) =>
+      d.classList.toggle('active', i === slideIdx));
+
+    // If current slide has a video, play it and wait for it to end
+    const curVideo = slides[slideIdx] && slides[slideIdx].querySelector('video');
+    if (curVideo) {
+      clearInterval(autoTimer);
+      curVideo.currentTime = 0;
+      curVideo.play();
+      curVideo.onended = () => { goSlide(slideIdx + 1); startAuto(); };
+    }
+  }
+
+  window.slideMove = (dir) => { clearInterval(autoTimer); goSlide(slideIdx + dir); startAuto(); };
+
+  function startAuto() {
+    clearInterval(autoTimer);
+    // Don't auto-advance if current slide has a video playing
+    const curVideo = slides[slideIdx] && slides[slideIdx].querySelector('video');
+    if (curVideo && !curVideo.paused) return;
+    autoTimer = setInterval(() => goSlide(slideIdx + 1), 4500);
+  }
+  startAuto();
+
+  // Touch / swipe support
+  let touchStartX = 0;
+  const slider = document.getElementById('heroSlider');
+  if (slider) {
+    slider.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, {passive:true});
+    slider.addEventListener('touchend', e => {
+      const diff = touchStartX - e.changedTouches[0].screenX;
+      if (Math.abs(diff) > 40) { clearInterval(autoTimer); goSlide(slideIdx + (diff > 0 ? 1 : -1)); startAuto(); }
+    }, {passive:true});
+  }
+}
+</script>
+<!-- CALL POPUP -->
+<div class="call-popup-overlay" id="callOverlay" onclick="closeCallPopup()"></div>
+<div class="call-popup" id="callPopup">
+  <div class="call-popup-header">
+    <div class="cp-icon">📞</div>
+    <div>
+      <div class="cp-title">Talk to a Counsellor</div>
+      <div class="cp-sub">Have doubts? We are happy to help!</div>
+    </div>
+    <button class="call-popup-close" onclick="closeCallPopup()">×</button>
+  </div>
+  <div class="call-popup-body">
+    <div class="cp-label">Call Us Now</div>
+    <div class="call-popup-numbers">
+      <a href="tel:+917387350221">
+        <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        7387350221
+      </a>
+    </div>
+    <a class="call-popup-wa" href="https://wa.me/917387350221" target="_blank">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Chat on WhatsApp
+    </a>
+  </div>
+</div>
+<script>
+function openCallPopup() {
+  document.getElementById("callPopup").classList.add("open");
+  document.getElementById("callOverlay").classList.add("open");
+}
+function closeCallPopup() {
+  document.getElementById("callPopup").classList.remove("open");
+  document.getElementById("callOverlay").classList.remove("open");
+}
+</script>
+</body>
+</html>
