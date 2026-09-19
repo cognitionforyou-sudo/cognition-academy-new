@@ -1230,3 +1230,34 @@ body::before {
 @media (min-width: 769px) and (max-width: 1024px) {
   .faculty-grid { grid-template-columns: repeat(2, 1fr); }
 }
+
+/* ═══════════════════════════════════════════
+   CURRICULUM TABLE — MOBILE FIX (SCROLLABLE)
+═══════════════════════════════════════════ */
+.subject-block {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 700px) {
+  .curr-table {
+    table-layout: auto;
+    min-width: 620px;
+    font-size: 13px;
+  }
+  .curr-table thead th {
+    white-space: normal;
+    padding: 10px 12px;
+  }
+  .curr-table tbody td {
+    white-space: normal;
+    padding: 10px 12px;
+  }
+  .curriculum-tabs {
+    justify-content: center;
+  }
+  .tab-btn {
+    font-size: 12px;
+    padding: 8px 16px;
+  }
+}

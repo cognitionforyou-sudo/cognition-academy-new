@@ -673,6 +673,13 @@
 </footer>
 
 <script>
+// Mobile hamburger menu toggle
+function toggleMenu() {
+  document.getElementById('mobileDrawer').classList.toggle('open');
+  document.getElementById('mobileOverlay').classList.toggle('open');
+  document.getElementById('hamburger').classList.toggle('open');
+}
+
 // Tab switching
 function showTab(id, btn) {
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
